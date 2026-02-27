@@ -1,6 +1,5 @@
-<!DOCTYPE html    <me    <meta property="twitter:title" content="Quanto Vale a Minha Empresa? | Calculadora Gratuita">
-    <meta property="twitter:description" content="Descubra o valor real da sua empresa com nossa calculadora profissional de valuation.""> property="og:title" content="Quanto Vale a Minha Empresa? | Calculadora Gratuita">
-    <meta property="og:description" content="Descubra o valor real da sua empresa com nossa calculadora profissional de valuation.""><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,79 +8,168 @@
     <meta name="keywords" content="valuation, avaliação empresa, valor empresa, M&A, fusões aquisições, calculadora empresarial, quanto vale minha empresa">
     <meta name="author" content="José Felipe Carneiro">
     <link rel="canonical" href="https://www.josefelipe.com.br/valuation">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.josefelipe.com.br/valuation">
-    <meta property="og:title" content="Calculadora de Valuation | José Felipe Carneiro">
-    <meta property="og:description" content="Descubra o valor real da sua empresa com a metodologia de valuation desenvolvida por José Felipe Carneiro.">
+    <meta property="og:title" content="Quanto Vale a Minha Empresa? | Calculadora Gratuita">
+    <meta property="og:description" content="Descubra o valor real da sua empresa com nossa calculadora profissional de valuation.">
     <meta property="og:image" content="https://www.josefelipe.com.br/lovable-uploads/d08ef557-2a05-4a2c-a1a6-12bb07b532b7.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.josefelipe.com.br/valuation">
-    <meta property="twitter:title" content="Calculadora de Valuation | José Felipe Carneiro">
-    <meta property="twitter:description" content="Descubra o valor real da sua empresa com a metodologia de valuation desenvolvida por José Felipe Carneiro.">
+    <meta property="twitter:title" content="Quanto Vale a Minha Empresa? | Calculadora Gratuita">
+    <meta property="twitter:description" content="Descubra o valor real da sua empresa com nossa calculadora profissional de valuation.">
     <meta property="twitter:image" content="https://www.josefelipe.com.br/lovable-uploads/d08ef557-2a05-4a2c-a1a6-12bb07b532b7.png">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-light: #8B85FF;
+            --primary-dark: #5046E5;
+            --primary-glow: rgba(108, 99, 255, 0.15);
+            --accent: #00D4AA;
+            --accent-light: #33DDBB;
+            --accent-glow: rgba(0, 212, 170, 0.15);
+            --bg-dark: #0B0D17;
+            --bg-card: #12141F;
+            --bg-card-hover: #1A1D2E;
+            --bg-input: #181B2A;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.65);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --danger: #FF6B6B;
+            --warning: #FFB84D;
+            --success: #00D4AA;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 40px rgba(108, 99, 255, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #ffffff;
-            background: #0a0a0a;
+            color: var(--text-primary);
+            background: var(--bg-dark);
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
+        /* Animated background */
+        .bg-gradient {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-            z-index: -2;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        body::after {
+        .bg-gradient::before {
             content: '';
-            position: fixed;
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 212, 170, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(108, 99, 255, 0.06) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, -2%) rotate(1deg); }
+            66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+        }
+
+        /* Noise texture overlay */
+        .bg-gradient::after {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, rgba(120, 119, 198, 0.08) 0%, transparent 50%);
-            z-index: -1;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
 
         .container {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
             z-index: 1;
         }
 
+        /* Back link */
+        .portal-link {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .portal-link a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .portal-link a:hover {
+            color: var(--primary-light);
+        }
+
+        .portal-link a svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .portal-link a:hover svg {
+            transform: translateX(-3px);
+        }
+
+        /* Header */
         .header {
             text-align: center;
             margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 16px;
-            backdrop-filter: blur(20px);
+            padding: 48px 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
             position: relative;
+            overflow: hidden;
         }
 
         .header::before {
@@ -90,267 +178,251 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-glow);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            color: var(--primary-light);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .header-badge svg {
+            width: 14px;
+            height: 14px;
         }
 
         .header h1 {
-            color: #ffffff;
-            margin-bottom: 15px;
-            font-size: 2.8em;
-            font-weight: 300;
-            letter-spacing: -0.02em;
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
         }
 
-        .header h1 strong {
-            font-weight: 600;
-            background: linear-gradient(135deg, #7877c6 0%, #ffffff 100%);
+        .header h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .header p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            font-weight: 300;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 400;
+            max-width: 520px;
+            margin: 0 auto 8px;
         }
 
-        .header .author {
-            color: #7877c6;
-            font-weight: 500;
-            font-size: 1em;
+        .header .author-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-top: 20px;
-        }
-
-        .jfc-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #7877c6 0%, #a8a7e6 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 100px;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-top: 15px;
             letter-spacing: 0.5px;
+            color: white;
+            box-shadow: 0 4px 16px rgba(108, 99, 255, 0.3);
         }
 
-        .form-container {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Form section */
+        .form-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
             padding: 40px;
-            border-radius: 16px;
-            backdrop-filter: blur(20px);
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: #ffffff;
-            font-size: 1em;
-            letter-spacing: 0.3px;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #7877c6;
-            box-shadow: 0 0 0 3px rgba(120, 119, 198, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        select option {
-            background: #1a1a1a;
-            color: #ffffff;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #7877c6 0%, #a8a7e6 100%);
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 20px;
-            letter-spacing: 0.5px;
+            margin-bottom: 32px;
             position: relative;
             overflow: hidden;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(120, 119, 198, 0.3);
-        }
-
-        .result-container {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 16px;
-            backdrop-filter: blur(20px);
-            margin-top: 30px;
-            display: none;
-            position: relative;
-        }
-
-        .result-container::before {
+        .form-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(120, 119, 198, 0.5), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         }
 
-        .result-container h2 {
-            color: #ffffff;
-            margin-bottom: 30px;
-            font-weight: 300;
-            font-size: 1.8em;
-            text-align: center;
-        }
-
-        .analysis-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .analysis-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+        /* Privacy notice */
+        .privacy-notice {
+            display: flex;
+            gap: 16px;
             padding: 20px;
-            backdrop-filter: blur(10px);
+            background: rgba(0, 212, 170, 0.06);
+            border: 1px solid rgba(0, 212, 170, 0.15);
+            border-radius: var(--radius-md);
+            margin-bottom: 32px;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
         }
 
-        .analysis-card h3 {
-            color: #7877c6;
-            font-size: 1.1em;
+        .privacy-notice .notice-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 170, 0.12);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .privacy-notice strong {
+            color: var(--accent);
             font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
         }
 
-        .analysis-card .value {
-            color: #ffffff;
-            font-size: 1.3em;
-            font-weight: 700;
-            text-align: center;
+        /* Section titles */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title .section-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-glow);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title .section-step {
+            margin-left: auto;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Form grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             margin-bottom: 8px;
-        }
-
-        .analysis-card .label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9em;
-            text-align: center;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.875rem;
         }
 
         /* Tooltips */
         .tooltip {
             position: relative;
-            display: inline-block;
+            display: inline-flex;
             cursor: help;
         }
 
         .tooltip .info-icon {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 16px;
             height: 16px;
-            background: rgba(120, 119, 198, 0.8);
+            background: rgba(108, 99, 255, 0.2);
             border-radius: 50%;
-            color: white;
-            text-align: center;
-            font-size: 12px;
-            line-height: 16px;
-            margin-left: 8px;
-            font-weight: bold;
+            color: var(--primary-light);
+            font-size: 10px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .tooltip:hover .info-icon {
+            background: rgba(108, 99, 255, 0.4);
         }
 
         .tooltip .tooltiptext {
             visibility: hidden;
-            width: 280px;
-            background: rgba(0, 0, 0, 0.95);
-            color: #fff;
+            width: 260px;
+            background: #1E2035;
+            color: var(--text-secondary);
             text-align: left;
-            border-radius: 8px;
-            padding: 12px;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
             position: absolute;
             z-index: 1000;
-            bottom: 125%;
+            bottom: calc(100% + 8px);
             left: 50%;
-            margin-left: -140px;
+            transform: translateX(-50%);
             opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 13px;
-            line-height: 1.4;
-            border: 1px solid rgba(120, 119, 198, 0.5);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            font-weight: 400;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-lg);
+            pointer-events: none;
         }
 
         .tooltip .tooltiptext::after {
-            content: "";
+            content: '';
             position: absolute;
             top: 100%;
             left: 50%;
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
+            border-color: #1E2035 transparent transparent transparent;
         }
 
         .tooltip:hover .tooltiptext {
@@ -360,584 +432,1059 @@
 
         .form-group .tooltip .tooltiptext {
             bottom: auto;
-            top: 125%;
+            top: calc(100% + 8px);
         }
 
         .form-group .tooltip .tooltiptext::after {
             top: auto;
             bottom: 100%;
-            border-color: transparent transparent rgba(0, 0, 0, 0.95) transparent;
+            border-color: transparent transparent #1E2035 transparent;
         }
 
-        .analysis-card .tooltip .tooltiptext {
-            width: 250px;
-            margin-left: -125px;
+        /* Inputs */
+        input, select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.9375rem;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            transition: all 0.25s ease;
+            outline: none;
         }
 
-        .result-item {
+        input::placeholder {
+            color: var(--text-muted);
+        }
+
+        input:hover, select:hover {
+            border-color: var(--border-hover);
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow), var(--shadow-sm);
+            background: var(--bg-card-hover);
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236C63FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        select option {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 10px;
+        }
+
+        /* Submit button */
+        .btn-primary {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .result-item:last-child {
-            border-bottom: none;
-        }
-
-        .result-label {
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .result-value {
-            font-size: 1.2em;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
             font-weight: 600;
-            color: #7877c6;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 16px rgba(108, 99, 255, 0.3);
         }
 
-        .highlight-result {
-            background: rgba(120, 119, 198, 0.1);
-            border: 1px solid rgba(120, 119, 198, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(108, 99, 255, 0.4);
         }
 
-        .highlight-result .result-value {
-            font-size: 1.8em;
-            color: #a8a7e6;
-            font-weight: 700;
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
-        .privacy-notice {
-            background: rgba(120, 119, 198, 0.1);
-            border: 1px solid rgba(120, 119, 198, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 25px 0;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.5;
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            backdrop-filter: blur(20px);
-            color: rgba(255, 255, 255, 0.7);
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s ease;
         }
 
-        .footer h3 {
-            color: #ffffff;
-            margin-bottom: 15px;
-            font-weight: 500;
+        .btn-primary:hover::after {
+            left: 100%;
         }
 
-        .footer a {
-            color: #7877c6;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
+        .btn-secondary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 28px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
         }
 
-        .footer a:hover {
-            color: #a8a7e6;
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
         }
 
+        .btn-secondary svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .btn-share {
+            background: rgba(0, 212, 170, 0.1);
+            border-color: rgba(0, 212, 170, 0.2);
+            color: var(--accent);
+        }
+
+        .btn-share:hover {
+            background: rgba(0, 212, 170, 0.18);
+            border-color: rgba(0, 212, 170, 0.3);
+        }
+
+        /* Loading */
         .loading {
             display: none;
             text-align: center;
-            margin: 30px 0;
+            padding: 40px;
         }
 
-        .spinner {
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid #7877c6;
+        .loading-spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
             margin: 0 auto 20px;
         }
 
         .loading p {
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 300;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.9375rem;
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .portal-link {
+        /* Results section */
+        .result-container {
+            display: none;
+            margin-top: 32px;
+            animation: fadeSlideUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
 
-        .portal-link a {
-            color: #7877c6;
-            text-decoration: none;
+        .result-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .result-header p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        /* Analysis grid */
+        .analysis-section {
+            margin-bottom: 24px;
+        }
+
+        .analysis-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            padding-left: 4px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .analysis-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analysis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .analysis-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .analysis-card:hover::before {
+            opacity: 1;
+        }
+
+        .analysis-card .card-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
             font-weight: 500;
-            font-size: 0.95em;
-            transition: color 0.3s ease;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .portal-link a:hover {
-            color: #a8a7e6;
+        .analysis-card .card-value {
+            color: var(--text-primary);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
+        .analysis-card .card-label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+
+        .analysis-card .tooltip .tooltiptext {
+            width: 220px;
+        }
+
+        /* Final result card */
+        .final-result {
+            background: var(--bg-card);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-top: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .final-result::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        }
+
+        .final-result::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--primary-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .final-result .final-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-result .final-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-result .range-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 8px 20px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-result .range-container svg {
+            width: 14px;
+            height: 14px;
+            color: var(--accent);
+        }
+
+        .final-result .range-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Action buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+        }
+
+        .footer-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 4px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+            border-color: rgba(108, 99, 255, 0.3);
+            background: var(--primary-glow);
+        }
+
+        .footer-links a svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .footer-copyright {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 2.2em;
-            }
-            
-            .form-container, .result-container {
-                padding: 25px;
+                padding: 16px;
             }
 
-            .header, .form-container, .result-container {
-                border-radius: 12px;
+            .header {
+                padding: 32px 24px;
+                border-radius: var(--radius-lg);
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-section {
+                padding: 24px;
+                border-radius: var(--radius-lg);
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
             }
 
             .analysis-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 10px;
             }
 
             .analysis-card {
-                padding: 15px;
+                padding: 16px;
+            }
+
+            .final-result .final-value {
+                font-size: 1.8rem;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                gap: 6px;
+            }
+
+            .privacy-notice {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .result-container,
+            .footer {
+                border-radius: var(--radius-lg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.65rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .section-title h2 {
+                font-size: 1rem;
+            }
+
+            .final-result {
+                padding: 24px;
+            }
+
+            .final-result .final-value {
+                font-size: 1.5rem;
+            }
+
+            .final-result .range-container {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .bg-gradient,
+            .portal-link,
+            .btn-primary,
+            .btn-secondary,
+            .loading,
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: #1a1a1a;
+            }
+
+            .header, .form-section, .result-container, .analysis-card, .final-result, .footer {
+                background: white;
+                border-color: #e5e5e5;
+                box-shadow: none;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-gradient"></div>
+
     <div class="container">
         <div class="portal-link">
-            <a href="https://www.josefelipe.com.br">← Voltar ao Portal Oficial JFC</a>
+            <a href="https://www.josefelipe.com.br">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Voltar ao Portal Oficial JFC
+            </a>
         </div>
 
         <div class="header">
-            <h1><strong>QUANTO VALE</strong> A MINHA EMPRESA?</h1>
-            <p>Descubra o valor real da sua empresa com metodologia profissional</p>
-            <p>Análise completa e gratuita baseada no mercado brasileiro</p>
-            <div class="jfc-badge">JOSÉ FELIPE CARNEIRO</div>
+            <div class="header-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Calculadora Profissional
+            </div>
+            <h1><span class="gradient-text">QUANTO VALE</span><br>A MINHA EMPRESA?</h1>
+            <p>Descubra o valor real da sua empresa com metodologia profissional de valuation baseada no mercado brasileiro</p>
+            <div class="author-tag">JOSE FELIPE CARNEIRO</div>
         </div>
 
-        <div class="form-container">
+        <div class="form-section">
             <form id="valuationForm">
                 <div class="privacy-notice">
-                    🔒 <strong>Privacidade Total Garantida:</strong> Todos os dados são processados localmente no seu navegador. 
-                    Nenhuma informação é enviada para servidores externos. O nome da empresa é opcional para total discrição.
-                    <br><br>
-                    📊 <strong>Metodologia Profissional:</strong> Baseada em múltiplos de mercado atualizados e fatores qualitativos.
+                    <div class="notice-icon">&#128274;</div>
+                    <div>
+                        <strong>Privacidade Total Garantida</strong> &mdash; Todos os dados sao processados localmente no seu navegador. Nenhuma informacao e enviada para servidores externos. Metodologia profissional baseada em multiplos de mercado atualizados.
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="companyName">Nome da Empresa (Opcional - para relatório):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">O nome da sua empresa aparecerá apenas no relatório em PDF. Este campo é opcional - você pode deixar em branco para manter total privacidade.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="companyName" placeholder="Deixe em branco para manter privacidade total">
+                <!-- Section 1: Company Info -->
+                <div class="section-title">
+                    <div class="section-icon">&#127970;</div>
+                    <h2>Informacoes da Empresa</h2>
+                    <span class="section-step">Etapa 1 de 4</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="sector">Setor de Atuação:
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Escolha o setor que melhor descreve o seu negócio. Cada setor tem características diferentes que afetam o valor da empresa (tecnologia vale mais que varejo, por exemplo).</span>
-                        </span>
-                    </label>
-                    <select id="sector" required>
-                        <option value="">Selecione o setor...</option>
-                        <option value="tecnologia">Tecnologia</option>
-                        <option value="saude">Saúde</option>
-                        <option value="educacao">Educação</option>
-                        <option value="alimentacao">Alimentação & Bebidas</option>
-                        <option value="varejo">Varejo</option>
-                        <option value="servicos">Serviços</option>
-                        <option value="construcao">Construção</option>
-                        <option value="industria">Indústria</option>
-                        <option value="agronegocio">Agronegócio</option>
-                        <option value="energia">Energia</option>
-                        <option value="logistica">Logística</option>
-                        <option value="financeiro">Financeiro</option>
-                    </select>
+                <div class="form-grid" style="margin-bottom: 32px;">
+                    <div class="form-group">
+                        <label for="companyName">Nome da Empresa (Opcional)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">O nome da sua empresa aparecera apenas no relatorio em PDF. Este campo e opcional - voce pode deixar em branco para manter total privacidade.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="companyName" placeholder="Deixe em branco para privacidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="sector">Setor de Atuacao
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Escolha o setor que melhor descreve o seu negocio. Cada setor tem multiplicadores diferentes que afetam o valor da empresa.</span>
+                            </span>
+                        </label>
+                        <select id="sector" required>
+                            <option value="">Selecione o setor...</option>
+                            <option value="tecnologia">Tecnologia</option>
+                            <option value="saude">Saude</option>
+                            <option value="educacao">Educacao</option>
+                            <option value="alimentacao">Alimentacao & Bebidas</option>
+                            <option value="varejo">Varejo</option>
+                            <option value="servicos">Servicos</option>
+                            <option value="construcao">Construcao</option>
+                            <option value="industria">Industria</option>
+                            <option value="agronegocio">Agronegocio</option>
+                            <option value="energia">Energia</option>
+                            <option value="logistica">Logistica</option>
+                            <option value="financeiro">Financeiro</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="revenue">Receita Anual (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Todo o dinheiro que a empresa faturou no último ano. É o total de vendas antes de descontar qualquer gasto. Exemplo: se você vende 100 produtos por R$ 1.000 cada, sua receita é R$ 100.000.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="revenue" required placeholder="Ex: 1.000.000,00" class="currency-input">
+                <!-- Section 2: Financial Data -->
+                <div class="section-title">
+                    <div class="section-icon">&#128176;</div>
+                    <h2>Dados Financeiros</h2>
+                    <span class="section-step">Etapa 2 de 4</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="ebitda">EBITDA Anual (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">O lucro da empresa antes dos impostos, juros e depreciação. É como se fosse o "dinheiro que sobra" das operações do dia a dia. Pense assim: Receita menos todos os gastos para manter a empresa funcionando.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="ebitda" required placeholder="Ex: 200.000,00" class="currency-input">
+                <div class="form-grid" style="margin-bottom: 32px;">
+                    <div class="form-group">
+                        <label for="revenue">Receita Anual (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Todo o dinheiro que a empresa faturou no ultimo ano. E o total de vendas antes de descontar qualquer gasto.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="revenue" required placeholder="Ex: 1.000.000,00" class="currency-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="ebitda">EBITDA Anual (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">O lucro da empresa antes dos impostos, juros e depreciacao. E o dinheiro que sobra das operacoes do dia a dia.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="ebitda" required placeholder="Ex: 200.000,00" class="currency-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="netIncome">Lucro Liquido Anual (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">O dinheiro que realmente sobra para os donos depois de pagar tudo: funcionarios, fornecedores, impostos, juros, etc.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="netIncome" required placeholder="Ex: 150.000,00" class="currency-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="assets">Total de Ativos (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Tudo que a empresa possui e que tem valor: dinheiro no banco, equipamentos, imoveis, estoque, etc.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="assets" required placeholder="Ex: 500.000,00" class="currency-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="debt">Total de Dividas (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Todo dinheiro que a empresa deve: emprestimos bancarios, financiamentos, dividas com fornecedores, impostos em atraso.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="debt" required placeholder="Ex: 100.000,00" class="currency-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="workingCapital">Capital de Giro (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">O dinheiro que a empresa precisa ter disponivel para funcionar no dia a dia: pagar fornecedores, funcionarios, aluguel.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="workingCapital" placeholder="Ex: 50.000,00" class="currency-input">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="netIncome">Lucro Líquido Anual (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">O dinheiro que realmente sobra para os donos depois de pagar TUDO: funcionários, fornecedores, impostos, juros, etc. É o que vai para o bolso dos sócios no final do ano.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="netIncome" required placeholder="Ex: 150.000,00" class="currency-input">
+                <!-- Section 3: Operational Data -->
+                <div class="section-title">
+                    <div class="section-icon">&#128200;</div>
+                    <h2>Dados Operacionais</h2>
+                    <span class="section-step">Etapa 3 de 4</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="assets">Total de Ativos (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Tudo que a empresa possui e que tem valor: dinheiro no banco, equipamentos, imóveis, estoque, dinheiro que os clientes devem, etc. É como se fosse o "patrimônio total" da empresa.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="assets" required placeholder="Ex: 500.000,00" class="currency-input">
+                <div class="form-grid" style="margin-bottom: 32px;">
+                    <div class="form-group">
+                        <label for="averageTicket">Ticket Medio por Cliente (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quanto cada cliente gasta em media por compra. Ex: se vendeu R$ 100.000 para 500 clientes, seu ticket medio e R$ 200.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="averageTicket" placeholder="Ex: 150,00" class="currency-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="customers">Clientes Ativos
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quantos clientes diferentes compraram da sua empresa no ultimo ano.</span>
+                            </span>
+                        </label>
+                        <input type="number" id="customers" min="1" placeholder="Ex: 500">
+                    </div>
+                    <div class="form-group">
+                        <label for="cashCycle">Ciclo de Caixa (dias)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quantos dias a empresa demora para transformar seus investimentos em dinheiro.</span>
+                            </span>
+                        </label>
+                        <input type="number" id="cashCycle" min="0" placeholder="Ex: 30">
+                    </div>
+                    <div class="form-group">
+                        <label for="inventory">Estoque Atual (R$)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">O valor total de produtos que estao no seu estoque esperando para serem vendidos.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="inventory" placeholder="Ex: 80.000,00" class="currency-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="employees">Funcionarios
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Total de pessoas que trabalham na empresa, incluindo socios, CLT e estagiarios.</span>
+                            </span>
+                        </label>
+                        <input type="number" id="employees" required min="1" placeholder="Ex: 25">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="debt">Total de Dívidas (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Todo dinheiro que a empresa deve: empréstimos bancários, financiamentos, dívidas com fornecedores, impostos em atraso, etc. É tudo que precisa ser pago.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="debt" required placeholder="Ex: 100.000,00" class="currency-input">
+                <!-- Section 4: Market Position -->
+                <div class="section-title">
+                    <div class="section-icon">&#127942;</div>
+                    <h2>Posicao de Mercado</h2>
+                    <span class="section-step">Etapa 4 de 4</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="workingCapital">Capital de Giro (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">O dinheiro que a empresa precisa ter disponível para funcionar no dia a dia: pagar fornecedores, funcionários, aluguel, etc. É como a "reserva de emergência" da empresa.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="workingCapital" placeholder="Ex: 50.000,00" class="currency-input">
+                <div class="form-grid" style="margin-bottom: 16px;">
+                    <div class="form-group">
+                        <label for="marketPosition">Posicao no Mercado
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Como sua empresa se compara aos concorrentes. Lider = uma das maiores; Forte = bem conhecida; Media = mais uma no mercado; Emergente = empresa nova.</span>
+                            </span>
+                        </label>
+                        <select id="marketPosition" required>
+                            <option value="">Selecione...</option>
+                            <option value="lider">Lider de Mercado</option>
+                            <option value="forte">Posicao Forte</option>
+                            <option value="media">Posicao Media</option>
+                            <option value="emergente">Empresa Emergente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="growth">Crescimento (ultimos 3 anos)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Como sua empresa esta crescendo. Compare a receita de hoje com a de 3 anos atras.</span>
+                            </span>
+                        </label>
+                        <select id="growth" required>
+                            <option value="">Selecione...</option>
+                            <option value="alto">Alto (&gt;30% ao ano)</option>
+                            <option value="medio">Medio (10-30% ao ano)</option>
+                            <option value="baixo">Baixo (0-10% ao ano)</option>
+                            <option value="negativo">Negativo (&lt;0% ao ano)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="averageTicket">Ticket Médio por Cliente (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quanto cada cliente gasta em média por compra. Exemplo: se você vendeu R$ 100.000 para 500 clientes, seu ticket médio é R$ 200. Ajuda a entender o valor de cada cliente.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="averageTicket" placeholder="Ex: 150,00" class="currency-input">
-                </div>
-
-                <div class="form-group">
-                    <label for="customers">Número de Clientes Ativos:
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quantos clientes diferentes compraram da sua empresa no último ano. Clientes ativos são aqueles que realmente fizeram pedidos, não apenas visitaram sua loja.</span>
-                        </span>
-                    </label>
-                    <input type="number" id="customers" min="1" placeholder="Ex: 500">
-                </div>
-
-                <div class="form-group">
-                    <label for="cashCycle">Ciclo de Conversão de Caixa (dias):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quantos dias a empresa demora para transformar seus investimentos em dinheiro. Por exemplo: compro matéria-prima hoje, fabrico, vendo e recebo o pagamento em 30 dias.</span>
-                        </span>
-                    </label>
-                    <input type="number" id="cashCycle" min="0" placeholder="Ex: 30">
-                </div>
-
-                <div class="form-group">
-                    <label for="inventory">Estoque Atual (R$):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">O valor total de produtos que estão no seu estoque esperando para serem vendidos. Inclui matéria-prima, produtos em fabricação e produtos prontos.</span>
-                        </span>
-                    </label>
-                    <input type="text" id="inventory" placeholder="Ex: 80.000,00" class="currency-input">
-                </div>
-
-                <div class="form-group">
-                    <label for="employees">Número de Funcionários:
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Total de pessoas que trabalham na empresa, incluindo sócios que recebem salário, funcionários CLT, estagiários, etc. Ajuda a medir a produtividade da equipe.</span>
-                        </span>
-                    </label>
-                    <input type="number" id="employees" required min="1" placeholder="Ex: 25">
-                </div>
-
-                <div class="form-group">
-                    <label for="marketPosition">Posição no Mercado:
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Como sua empresa se compara aos concorrentes. Líder = uma das maiores do setor; Forte = bem conhecida; Média = mais uma no mercado; Emergente = empresa nova/pequena.</span>
-                        </span>
-                    </label>
-                    <select id="marketPosition" required>
-                        <option value="">Selecione...</option>
-                        <option value="lider">Líder de Mercado</option>
-                        <option value="forte">Posição Forte</option>
-                        <option value="media">Posição Média</option>
-                        <option value="emergente">Empresa Emergente</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="growth">Crescimento da Receita (últimos 3 anos - %):
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Como sua empresa está crescendo. Compare a receita de hoje com a de 3 anos atrás. Alto = mais que dobrou; Médio = cresceu bastante; Baixo = cresceu pouco; Negativo = vendeu menos.</span>
-                        </span>
-                    </label>
-                    <select id="growth" required>
-                        <option value="">Selecione...</option>
-                        <option value="alto">Alto (>30% ao ano)</option>
-                        <option value="medio">Médio (10-30% ao ano)</option>
-                        <option value="baixo">Baixo (0-10% ao ano)</option>
-                        <option value="negativo">Negativo (<0% ao ano)</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn">CALCULAR VALUATION</button>
+                <button type="submit" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    CALCULAR VALUATION
+                </button>
             </form>
 
             <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Processando análise de valuation...</p>
+                <div class="loading-spinner"></div>
+                <p>Processando analise de valuation...</p>
             </div>
         </div>
 
+        <!-- Results -->
         <div class="result-container" id="resultContainer">
-            <h2>RESULTADO DA AVALIAÇÃO</h2>
-            
-            <!-- Análises em 3 colunas -->
-            <div class="analysis-grid">
-                <div class="analysis-card">
-                    <h3>Valuation por Receita
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quanto sua empresa vale baseado no faturamento. Empresas do mesmo setor são vendidas por um múltiplo da receita. Por exemplo: empresas de tecnologia valem 4x a receita anual.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="revenueValue">-</div>
-                    <div class="label">Múltiplo sobre faturamento</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Valuation por EBITDA
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quanto sua empresa vale baseado no lucro operacional. É uma das formas mais usadas para avaliar empresas, pois mostra a capacidade real de gerar dinheiro.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="ebitdaValue">-</div>
-                    <div class="label">Múltiplo sobre EBITDA</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Valuation por Lucro
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quanto sua empresa vale baseado no lucro líquido final. É o dinheiro que realmente sobra para os donos depois de pagar tudo.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="netIncomeValue">-</div>
-                    <div class="label">Múltiplo sobre lucro líquido</div>
+            <div class="result-header">
+                <h2>Resultado da Avaliacao</h2>
+                <p>Analise completa baseada em multiplos de mercado do setor</p>
+            </div>
+
+            <!-- Row 1: Valuation Methods -->
+            <div class="analysis-section">
+                <div class="analysis-section-title">Metodos de Valuation</div>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Valuation por Receita
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quanto sua empresa vale baseado no faturamento, usando multiplos setoriais.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="revenueValue">-</div>
+                        <div class="card-label">Multiplo sobre faturamento</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Valuation por EBITDA
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Uma das formas mais usadas para avaliar empresas, baseada no lucro operacional.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="ebitdaValue">-</div>
+                        <div class="card-label">Multiplo sobre EBITDA</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Valuation por Lucro
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Valor baseado no lucro liquido final que sobra para os donos.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="netIncomeValue">-</div>
+                        <div class="card-label">Multiplo sobre lucro liquido</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="analysis-grid">
-                <div class="analysis-card">
-                    <h3>Patrimônio Líquido
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">O que realmente pertence aos donos da empresa. É tudo que a empresa tem (ativos) menos tudo que ela deve (dívidas). Como o patrimônio de uma pessoa.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="netWorthValue">-</div>
-                    <div class="label">Ativos menos passivos</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Margem EBITDA
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">De cada R$ 100 que a empresa fatura, quanto sobra de lucro operacional. Por exemplo: 20% significa que a cada R$ 100 de venda, sobram R$ 20 antes dos impostos.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="ebitdaMarginValue">-</div>
-                    <div class="label">EBITDA / Receita</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Margem Líquida
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">De cada R$ 100 que a empresa fatura, quanto realmente vai para o bolso dos donos. É o lucro final depois de pagar absolutamente tudo.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="netMarginValue">-</div>
-                    <div class="label">Lucro / Receita</div>
-                </div>
-            </div>
-
-            <div class="analysis-grid">
-                <div class="analysis-card">
-                    <h3>ROE
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Retorno sobre o Patrimônio Líquido. Mostra quanto de lucro a empresa gera para cada real investido pelos donos. 15% significa: para cada R$ 100 investidos, gera R$ 15 de lucro.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="roeValue">-</div>
-                    <div class="label">Retorno sobre patrimônio</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Receita por Funcionário
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quanto cada funcionário "produz" de faturamento por ano. Ajuda a medir se a equipe é produtiva. Por exemplo: R$ 100.000 por funcionário/ano é um bom número.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="revenuePerEmployeeValue">-</div>
-                    <div class="label">Produtividade da equipe</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Fator de Ajuste
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Um multiplicador que aumenta ou diminui o valor da empresa baseado em como ela está crescendo e sua posição no mercado. Empresas em crescimento valem mais.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="adjustmentFactorValue">-</div>
-                    <div class="label">Crescimento + Posição</div>
+            <!-- Row 2: Financial Health -->
+            <div class="analysis-section">
+                <div class="analysis-section-title">Saude Financeira</div>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Patrimonio Liquido
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Ativos menos dividas. O que realmente pertence aos donos.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="netWorthValue">-</div>
+                        <div class="card-label">Ativos menos passivos</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Margem EBITDA
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">De cada R$100 faturados, quanto sobra de lucro operacional.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="ebitdaMarginValue">-</div>
+                        <div class="card-label">EBITDA / Receita</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Margem Liquida
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">De cada R$100 faturados, quanto realmente vai para o bolso dos donos.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="netMarginValue">-</div>
+                        <div class="card-label">Lucro / Receita</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="analysis-grid">
-                <div class="analysis-card">
-                    <h3>Índice de Endividamento
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quanto da empresa é financiado por dívidas. 30% significa que de tudo que a empresa tem, 30% foi comprado com dinheiro emprestado. Menos de 50% é considerado saudável.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="debtRatioValue">-</div>
-                    <div class="label">Dívida / Ativos Totais</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>LTV (Lifetime Value)
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Valor médio que cada cliente traz para a empresa por ano. Se você tem 100 clientes e faturou R$ 200.000, cada cliente vale R$ 2.000 em média.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="ltvValue">-</div>
-                    <div class="label">Valor por cliente</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Enterprise Value
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">O valor total do negócio incluindo as dívidas. É quanto alguém pagaria para comprar a empresa inteira e assumir todas as suas dívidas.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="enterpriseValue">-</div>
-                    <div class="label">Valor da operação</div>
-                </div>
-            </div>
-
-            <div class="analysis-grid">
-                <div class="analysis-card">
-                    <h3>Giro de Estoque
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quantas vezes por ano a empresa consegue vender todo seu estoque. 6x significa que renova o estoque a cada 2 meses. Quanto maior, melhor.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="inventoryTurnoverValue">-</div>
-                    <div class="label">Vezes por ano</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Capital de Giro Líquido
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Dinheiro disponível para a empresa funcionar no dia a dia. É como ter uma reserva de emergência para pagar as contas do mês sem depender das vendas.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="workingCapitalValue">-</div>
-                    <div class="label">Liquidez operacional</div>
-                </div>
-                <div class="analysis-card">
-                    <h3>Ciclo de Caixa
-                        <span class="tooltip">
-                            <span class="info-icon">?</span>
-                            <span class="tooltiptext">Quantos dias a empresa demora para recuperar o dinheiro investido. Por exemplo: compro matéria-prima hoje, fabrico, vendo e recebo em 30 dias.</span>
-                        </span>
-                    </h3>
-                    <div class="value" id="cashCycleValue">-</div>
-                    <div class="label">Dias para conversão</div>
+            <!-- Row 3: Performance -->
+            <div class="analysis-section">
+                <div class="analysis-section-title">Performance</div>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            ROE
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Retorno sobre Patrimonio. Quanto de lucro a empresa gera para cada real investido.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="roeValue">-</div>
+                        <div class="card-label">Retorno sobre patrimonio</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Receita/Funcionario
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quanto cada funcionario produz de faturamento por ano.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="revenuePerEmployeeValue">-</div>
+                        <div class="card-label">Produtividade da equipe</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Fator de Ajuste
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Multiplicador baseado no crescimento e posicao de mercado da empresa.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="adjustmentFactorValue">-</div>
+                        <div class="card-label">Crescimento + Posicao</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Resultado Final -->
-            <div class="highlight-result" style="margin-top: 30px;">
-                <div class="result-item">
-                    <span class="result-label"><strong>VALOR ESTIMADO DA EMPRESA</strong></span>
-                    <span class="result-value" id="finalValue">-</span>
-                </div>
-                <div class="result-item" style="border-bottom: none;">
-                    <span class="result-label">Faixa de Valuation (±20%):</span>
-                    <span class="result-value" id="valuationRange">-</span>
+            <!-- Row 4: Debt & Value -->
+            <div class="analysis-section">
+                <div class="analysis-section-title">Endividamento & Valor</div>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Endividamento
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quanto da empresa e financiado por dividas. Menos de 50% e saudavel.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="debtRatioValue">-</div>
+                        <div class="card-label">Divida / Ativos Totais</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            LTV
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Valor medio que cada cliente traz para a empresa por ano.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="ltvValue">-</div>
+                        <div class="card-label">Valor por cliente</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Enterprise Value
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Valor total do negocio incluindo dividas. Quanto alguem pagaria para comprar a empresa inteira.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="enterpriseValue">-</div>
+                        <div class="card-label">Valor da operacao</div>
+                    </div>
                 </div>
             </div>
-            
-            <button type="button" class="btn" onclick="generatePDF()" style="margin-top: 25px;">
-                GERAR RELATÓRIO PDF
-            </button>
-            
-            <button type="button" class="btn" onclick="shareResults()" style="margin-top: 15px; background: linear-gradient(135deg, #1da1f2 0%, #0e71c8 100%);">
-                COMPARTILHAR RESULTADO
-            </button>
+
+            <!-- Row 5: Operations -->
+            <div class="analysis-section">
+                <div class="analysis-section-title">Indicadores Operacionais</div>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Giro de Estoque
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quantas vezes por ano a empresa vende todo seu estoque. Quanto maior, melhor.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="inventoryTurnoverValue">-</div>
+                        <div class="card-label">Vezes por ano</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Capital de Giro
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Dinheiro disponivel para a empresa funcionar no dia a dia.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="workingCapitalValue">-</div>
+                        <div class="card-label">Liquidez operacional</div>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-title">
+                            Ciclo de Caixa
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Quantos dias a empresa demora para recuperar o dinheiro investido.</span>
+                            </span>
+                        </div>
+                        <div class="card-value" id="cashCycleValue">-</div>
+                        <div class="card-label">Dias para conversao</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Result -->
+            <div class="final-result">
+                <div class="final-label">Valor Estimado da Empresa</div>
+                <div class="final-value" id="finalValue">-</div>
+                <div class="range-container">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                    Faixa: <span class="range-value" id="valuationRange">-</span>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="action-buttons">
+                <button type="button" class="btn-secondary" onclick="generatePDF()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Gerar Relatorio PDF
+                </button>
+                <button type="button" class="btn-secondary btn-share" onclick="shareResults()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    Compartilhar Resultado
+                </button>
+            </div>
         </div>
 
+        <!-- Footer -->
         <div class="footer">
-            <h3>José Felipe Carneiro</h3>
-            <p>Entusiasta do empreendedorismo brasileiro</p>
-            <p>Metodologia baseada em análise de mercado e múltiplos setoriais</p>
-            <div style="margin-top: 25px;">
-                <a href="https://www.josefelipe.com.br" target="_blank">Portal Oficial</a>
-                <a href="https://instagram.com/josefelipec" target="_blank">@josefelipec</a>
-                <a href="https://linkedin.com/in/josefelipec" target="_blank">LinkedIn</a>
-                <a href="mailto:contato@josefelipe.com.br">Contato</a>
+            <div class="footer-name">Jose Felipe Carneiro</div>
+            <div class="footer-desc">Entusiasta do empreendedorismo brasileiro</div>
+            <div class="footer-desc">Metodologia baseada em analise de mercado e multiplos setoriais</div>
+            <div class="footer-links">
+                <a href="https://www.josefelipe.com.br" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Portal
+                </a>
+                <a href="https://instagram.com/josefelipec" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    @josefelipec
+                </a>
+                <a href="https://linkedin.com/in/josefelipec" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:contato@josefelipe.com.br">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Contato
+                </a>
             </div>
-            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
-                © 2025 José Felipe Carneiro - Todos os direitos reservados
-            </p>
+            <div class="footer-copyright">&copy; 2025 Jose Felipe Carneiro - Todos os direitos reservados</div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        // Múltiplos de valuation por setor (mercado brasileiro 2025)
+        // Multiplos de valuation por setor (mercado brasileiro 2025)
         const sectorMultiples = {
             'tecnologia': { revenue: 4.2, ebitda: 18.5, netIncome: 25.3 },
             'saude': { revenue: 2.8, ebitda: 12.4, netIncome: 18.7 },
@@ -961,13 +1508,12 @@
         });
 
         function calculateValuation() {
-            // Mostrar loading
             document.getElementById('loading').style.display = 'block';
             document.getElementById('resultContainer').style.display = 'none';
 
             setTimeout(() => {
                 const formData = {
-                    companyName: document.getElementById('companyName').value || 'Empresa Anônima',
+                    companyName: document.getElementById('companyName').value || 'Empresa Anonima',
                     sector: document.getElementById('sector').value,
                     revenue: parseCurrencyInput(document.getElementById('revenue').value),
                     ebitda: parseCurrencyInput(document.getElementById('ebitda').value),
@@ -985,19 +1531,18 @@
                 };
 
                 const multiples = sectorMultiples[formData.sector];
-                
-                // Cálculos base
+
+                // Calculos base
                 const revenueValuation = formData.revenue * multiples.revenue;
                 const ebitdaValuation = formData.ebitda * multiples.ebitda;
                 const netIncomeValuation = formData.netIncome * multiples.netIncome;
-                
-                // Patrimônio líquido
+
+                // Patrimonio liquido
                 const netWorth = formData.assets - formData.debt;
-                
+
                 // Ajustes por fatores qualitativos
                 let adjustmentFactor = 1.0;
-                
-                // Posição no mercado
+
                 const marketAdjustments = {
                     'lider': 1.25,
                     'forte': 1.10,
@@ -1005,8 +1550,7 @@
                     'emergente': 0.85
                 };
                 adjustmentFactor *= marketAdjustments[formData.marketPosition];
-                
-                // Crescimento
+
                 const growthAdjustments = {
                     'alto': 1.3,
                     'medio': 1.1,
@@ -1014,26 +1558,23 @@
                     'negativo': 0.7
                 };
                 adjustmentFactor *= growthAdjustments[formData.growth];
-                
-                // Cálculo final (média ponderada)
+
+                // Calculo final (media ponderada)
                 const baseValuation = (revenueValuation * 0.3 + ebitdaValuation * 0.4 + netIncomeValuation * 0.3);
                 const adjustedValuation = baseValuation * adjustmentFactor;
-                
-                // Faixas de valuation
+
                 const minValuation = adjustedValuation * 0.8;
                 const maxValuation = adjustedValuation * 1.2;
 
-                // Cálculos adicionais para análise
+                // Calculos adicionais
                 const ebitdaMargin = (formData.ebitda / formData.revenue) * 100;
                 const netMargin = (formData.netIncome / formData.revenue) * 100;
                 const roe = netWorth > 0 ? (formData.netIncome / netWorth) * 100 : 0;
                 const revenuePerEmployee = formData.revenue / formData.employees;
-                
-                // Novos cálculos
                 const debtRatio = (formData.debt / formData.assets) * 100;
                 const ltv = formData.customers > 0 ? (formData.revenue / formData.customers) : 0;
                 const enterpriseValue = adjustedValuation + formData.debt - (formData.workingCapital || 0);
-                const inventoryTurnover = formData.inventory > 0 ? (formData.revenue * 0.7) / formData.inventory : 0; // Assumindo 70% de COGS
+                const inventoryTurnover = formData.inventory > 0 ? (formData.revenue * 0.7) / formData.inventory : 0;
                 const workingCapitalNet = formData.workingCapital;
                 const cashCycleDays = formData.cashCycle;
 
@@ -1062,10 +1603,8 @@
                 };
 
                 displayResults();
-                
-                // Salvar dados anonimamente
                 saveData(formData, currentResults);
-                
+
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('resultContainer').style.display = 'block';
                 document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
@@ -1073,32 +1612,26 @@
         }
 
         function displayResults() {
-            // Popula os cards de análise - Primeira linha
             document.getElementById('revenueValue').textContent = `R$ ${formatCurrency(currentResults.revenueValuation)}`;
             document.getElementById('ebitdaValue').textContent = `R$ ${formatCurrency(currentResults.ebitdaValuation)}`;
             document.getElementById('netIncomeValue').textContent = `R$ ${formatCurrency(currentResults.netIncomeValuation)}`;
-            
-            // Segunda linha
+
             document.getElementById('netWorthValue').textContent = `R$ ${formatCurrency(currentResults.netWorth)}`;
             document.getElementById('ebitdaMarginValue').textContent = `${currentResults.ebitdaMargin.toFixed(2)}%`;
             document.getElementById('netMarginValue').textContent = `${currentResults.netMargin.toFixed(2)}%`;
-            
-            // Terceira linha
+
             document.getElementById('roeValue').textContent = `${currentResults.roe.toFixed(2)}%`;
             document.getElementById('revenuePerEmployeeValue').textContent = `R$ ${formatCurrency(currentResults.revenuePerEmployee)}`;
             document.getElementById('adjustmentFactorValue').textContent = `${currentResults.adjustmentFactor.toFixed(2)}x`;
-            
-            // Quarta linha - Novos parâmetros
+
             document.getElementById('debtRatioValue').textContent = `${currentResults.debtRatio.toFixed(2)}%`;
             document.getElementById('ltvValue').textContent = currentResults.ltv > 0 ? `R$ ${formatCurrency(currentResults.ltv)}` : 'N/A';
             document.getElementById('enterpriseValue').textContent = `R$ ${formatCurrency(currentResults.enterpriseValue)}`;
-            
-            // Quinta linha - Mais parâmetros
+
             document.getElementById('inventoryTurnoverValue').textContent = currentResults.inventoryTurnover > 0 ? `${currentResults.inventoryTurnover.toFixed(2)}x` : 'N/A';
             document.getElementById('workingCapitalValue').textContent = `R$ ${formatCurrency(currentResults.workingCapitalNet)}`;
             document.getElementById('cashCycleValue').textContent = currentResults.cashCycleDays > 0 ? `${currentResults.cashCycleDays} dias` : 'N/A';
-            
-            // Resultado final
+
             document.getElementById('finalValue').textContent = `R$ ${formatCurrency(currentResults.adjustedValuation)}`;
             document.getElementById('valuationRange').textContent = `R$ ${formatCurrency(currentResults.minValuation)} - R$ ${formatCurrency(currentResults.maxValuation)}`;
         }
@@ -1108,17 +1641,6 @@
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             });
-        }
-
-        function formatCurrencyInput(input) {
-            let value = input.value.replace(/\D/g, '');
-            if (value) {
-                value = (parseInt(value) / 100).toLocaleString('pt-BR', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
-                input.value = value;
-            }
         }
 
         function parseCurrencyInput(value) {
@@ -1144,43 +1666,40 @@
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            
-            // Cabeçalho
+
             doc.setFontSize(22);
             doc.text('QUANTO VALE A MINHA EMPRESA?', 20, 30);
-            
+
             doc.setFontSize(12);
             doc.text(`Data: ${currentResults.date}`, 20, 50);
             doc.text(`Empresa: ${currentResults.companyName}`, 20, 60);
             doc.text(`Setor: ${currentResults.sector}`, 20, 70);
-            
-            // Metodologia
+
             doc.setFontSize(14);
             doc.text('METODOLOGIA PROFISSIONAL:', 20, 90);
             doc.setFontSize(10);
-            doc.text('• Múltiplos de mercado ajustados para o Brasil', 20, 100);
-            doc.text('• Análise de fatores qualitativos e quantitativos', 20, 108);
-            doc.text('• Benchmarking por setor de atuação', 20, 116);
-            
-            // Resultados
+            doc.text('- Multiplos de mercado ajustados para o Brasil', 20, 100);
+            doc.text('- Analise de fatores qualitativos e quantitativos', 20, 108);
+            doc.text('- Benchmarking por setor de atuacao', 20, 116);
+
             doc.setFontSize(16);
-            doc.text('ANÁLISE COMPLETA:', 20, 140);
-            
+            doc.text('ANALISE COMPLETA:', 20, 140);
+
             doc.setFontSize(12);
             let yPos = 155;
-            
+
             const results = [
                 `Valuation por Receita: R$ ${formatCurrency(currentResults.revenueValuation)}`,
                 `Valuation por EBITDA: R$ ${formatCurrency(currentResults.ebitdaValuation)}`,
                 `Valuation por Lucro: R$ ${formatCurrency(currentResults.netIncomeValuation)}`,
-                `Patrimônio Líquido: R$ ${formatCurrency(currentResults.netWorth)}`,
+                `Patrimonio Liquido: R$ ${formatCurrency(currentResults.netWorth)}`,
                 ``,
                 `Margem EBITDA: ${currentResults.ebitdaMargin.toFixed(1)}%`,
-                `Margem Líquida: ${currentResults.netMargin.toFixed(1)}%`,
+                `Margem Liquida: ${currentResults.netMargin.toFixed(1)}%`,
                 `ROE: ${currentResults.roe.toFixed(1)}%`,
-                `Receita por Funcionário: R$ ${formatCurrency(currentResults.revenuePerEmployee)}`,
+                `Receita por Funcionario: R$ ${formatCurrency(currentResults.revenuePerEmployee)}`,
                 ``,
-                `Índice de Endividamento: ${currentResults.debtRatio.toFixed(1)}%`,
+                `Indice de Endividamento: ${currentResults.debtRatio.toFixed(1)}%`,
                 `LTV por Cliente: ${currentResults.ltv > 0 ? 'R$ ' + formatCurrency(currentResults.ltv) : 'N/A'}`,
                 `Enterprise Value: R$ ${formatCurrency(currentResults.enterpriseValue)}`,
                 `Giro de Estoque: ${currentResults.inventoryTurnover > 0 ? currentResults.inventoryTurnover.toFixed(1) + 'x' : 'N/A'}`,
@@ -1191,7 +1710,7 @@
                 `VALOR ESTIMADO: R$ ${formatCurrency(currentResults.adjustedValuation)}`,
                 `Faixa de Valuation: R$ ${formatCurrency(currentResults.minValuation)} - R$ ${formatCurrency(currentResults.maxValuation)}`
             ];
-            
+
             results.forEach(line => {
                 if (line.includes('VALOR ESTIMADO')) {
                     doc.setFontSize(14);
@@ -1203,20 +1722,19 @@
                 doc.text(line, 20, yPos);
                 yPos += 10;
             });
-            
-            // Rodapé
+
             doc.setFontSize(10);
-            doc.text('José Felipe Carneiro - Entusiasta do empreendedorismo brasileiro', 20, 250);
-            doc.text('Metodologia baseada em análise de mercado e múltiplos setoriais', 20, 260);
-            doc.text('Instagram: @josefelipec • www.josefelipe.com.br', 20, 270);
+            doc.text('Jose Felipe Carneiro - Entusiasta do empreendedorismo brasileiro', 20, 250);
+            doc.text('Metodologia baseada em analise de mercado e multiplos setoriais', 20, 260);
+            doc.text('Instagram: @josefelipec | www.josefelipe.com.br', 20, 270);
             doc.text('Ferramenta: Quanto Vale a Minha Empresa?', 20, 280);
-            
+
             doc.save(`valuation-${currentResults.companyName.replace(/\s+/g, '-')}-${new Date().getTime()}.pdf`);
         }
 
         function shareResults() {
-            const shareText = `🚀 Acabei de calcular o valor da minha empresa!\n\n💰 Valor estimado: R$ ${formatCurrency(currentResults.adjustedValuation)}\n\n🔥 Use a calculadora "Quanto Vale a Minha Empresa?"\n✅ Metodologia profissional de valuation\n📊 Análise completa e gratuita\n\n🌐 Ferramenta desenvolvida por @josefelipec\n\n#valuation #empreendedorismo #startups #quantovaleminhaempresa`;
-            
+            const shareText = `Acabei de calcular o valor da minha empresa!\n\nValor estimado: R$ ${formatCurrency(currentResults.adjustedValuation)}\n\nUse a calculadora "Quanto Vale a Minha Empresa?"\nMetodologia profissional de valuation\nAnalise completa e gratuita\n\nFerramenta desenvolvida por @josefelipec\n\n#valuation #empreendedorismo #startups #quantovaleminhaempresa`;
+
             if (navigator.share) {
                 navigator.share({
                     title: 'Resultado do Valuation',
@@ -1224,16 +1742,15 @@
                     url: window.location.href
                 });
             } else {
-                // Fallback para copiar para clipboard
                 navigator.clipboard.writeText(shareText + '\n\n' + window.location.href);
                 alert('Resultado copiado para clipboard! Cole nas suas redes sociais.');
             }
         }
 
-        // Formatação automática de campos de moeda
+        // Formatacao automatica de campos de moeda
         document.addEventListener('DOMContentLoaded', function() {
             const currencyInputs = document.querySelectorAll('.currency-input');
-            
+
             currencyInputs.forEach(input => {
                 input.addEventListener('input', function() {
                     let value = this.value.replace(/\D/g, '');
@@ -1241,37 +1758,14 @@
                         this.value = '';
                         return;
                     }
-                    
-                    // Converte para número e formata
+
                     value = parseInt(value);
                     this.value = (value / 100).toLocaleString('pt-BR', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
                     });
                 });
-
-                input.addEventListener('focus', function() {
-                    this.style.textAlign = 'left';
-                });
-
-                input.addEventListener('blur', function() {
-                    this.style.textAlign = 'left';
-                });
             });
-        });
-
-        // Formatação automática de números (campos não monetários)
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            if (!input.classList.contains('currency-input')) {
-                input.addEventListener('input', function() {
-                    if (this.id !== 'employees' && this.id !== 'customers' && this.id !== 'cashCycle') {
-                        let value = this.value.replace(/\D/g, '');
-                        if (value) {
-                            this.value = parseInt(value);
-                        }
-                    }
-                });
-            }
         });
     </script>
 </body>
