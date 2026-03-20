@@ -1976,10 +1976,12 @@
                                 <li><span class="check">&#x2713;</span> Recalcule quantas vezes quiser por 30 dias</li>
                             </ul>
 
-                            <button class="btn-pay" onclick="unlockReport()">ACESSAR RELATORIO &mdash; R$ 99,00</button>
-
+                            <button class="btn-pay" onclick="handlePayment()">ACESSAR RELATORIO &mdash; R$ 99,00</button>
+                            <div style="text-align:center; margin-top:12px;">
+                                <img src="https://imgmp.mlstatic.com/org-img/banners/br/medios/468X60.jpg" alt="Mercado Pago" style="height:24px; opacity:0.5;">
+                            </div>
                             <div class="guarantee-badge">
-                                Satisfacao garantida ou reembolso em ate 7 dias
+                                Pix, cartao ou boleto · Satisfacao garantida ou reembolso em ate 7 dias
                             </div>
                         </div>
                     </div>
@@ -2528,12 +2530,64 @@
             });
         }
 
+        // ===== PAYMENT WITH MERCADO PAGO =====
+        // Para configurar: crie um link de pagamento no Mercado Pago (R$ 99)
+        // e substitua a URL abaixo. O link deve ter back_url apontando para este site.
+        // Mercado Pago Dashboard: https://www.mercadopago.com.br/tools/list
+        const MERCADO_PAGO_LINK = ''; // Cole aqui o link de pagamento do Mercado Pago
+
+        function handlePayment() {
+            if (MERCADO_PAGO_LINK) {
+                // Salvar dados no localStorage antes de redirecionar
+                localStorage.setItem('vp_pending_unlock', 'true');
+                localStorage.setItem('vp_results', JSON.stringify(currentResults));
+                window.location.href = MERCADO_PAGO_LINK;
+            } else {
+                // Modo demo: desbloqueia direto (remover quando tiver link do MP)
+                unlockReport();
+            }
+        }
+
         function unlockReport() {
             trackConversion('unlock');
             document.getElementById('lockedContent').classList.add('unlocked');
             document.getElementById('paywallOverlay').classList.add('hidden');
-            showToast('Relatorio desbloqueado!');
+            localStorage.setItem('vp_unlocked', 'true');
+            localStorage.setItem('vp_unlock_date', Date.now().toString());
+            localStorage.removeItem('vp_pending_unlock');
+            showToast('Relatorio desbloqueado com sucesso!');
         }
+
+        // Verificar se voltou do pagamento ou já tem acesso
+        (function checkPaymentReturn() {
+            const params = new URLSearchParams(window.location.search);
+            const pending = localStorage.getItem('vp_pending_unlock');
+            const alreadyUnlocked = localStorage.getItem('vp_unlocked');
+
+            // Voltou do Mercado Pago com sucesso
+            if (pending && (params.get('status') === 'approved' || params.get('collection_status') === 'approved')) {
+                // Restaurar resultados e desbloquear
+                const saved = localStorage.getItem('vp_results');
+                if (saved) {
+                    currentResults = JSON.parse(saved);
+                    setTimeout(function() {
+                        displayResults();
+                        unlockReport();
+                    }, 500);
+                }
+            }
+            // Já pagou anteriormente (acesso por 30 dias)
+            else if (alreadyUnlocked) {
+                const unlockDate = localStorage.getItem('vp_unlock_date');
+                if (unlockDate) {
+                    const days = (Date.now() - parseInt(unlockDate)) / (1000 * 60 * 60 * 24);
+                    if (days > 30) {
+                        localStorage.removeItem('vp_unlocked');
+                        localStorage.removeItem('vp_unlock_date');
+                    }
+                }
+            }
+        })();
 
         function showToast(message) {
             const toast = document.getElementById('toast');
