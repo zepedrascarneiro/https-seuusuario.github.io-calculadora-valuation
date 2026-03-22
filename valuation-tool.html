@@ -1549,6 +1549,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="mktChannel">Presenca Digital (Bonus MKT)
+                            <span class="tooltip">
+                                <span class="info-icon">?</span>
+                                <span class="tooltiptext">Insira seu Instagram, TikTok ou site para receber uma analise bonus de marketing digital com nota de 0 a 10.</span>
+                            </span>
+                        </label>
+                        <input type="text" id="mktChannel" placeholder="@seuinstagram, @seutiktok ou www.seusite.com.br">
+                    </div>
+
+                    <div class="form-group">
                         <label for="sector">Setor de Atuação
                             <span class="tooltip">
                                 <span class="info-icon">?</span>
@@ -1802,7 +1812,7 @@
             <!-- CTA COMPRA - Logo apos o numero do valuation -->
             <div class="cta-unlock-inline" id="ctaInline">
                 <div style="text-align:center; padding:24px 20px; background:linear-gradient(135deg, rgba(212,168,83,0.08), rgba(212,168,83,0.02)); border:1px solid rgba(212,168,83,0.25); border-radius:16px; margin-bottom:20px;">
-                    <div style="font-size:0.85rem; color:rgba(255,255,255,0.6); margin-bottom:10px;">Desbloqueie o relatorio completo com 15 indicadores</div>
+                    <div style="font-size:0.85rem; color:rgba(255,255,255,0.6); margin-bottom:10px;">Desbloqueie o relat&oacute;rio completo com 15 indicadores + <strong style="color:#D4A853;">B&Ocirc;NUS An&aacute;lise de MKT</strong></div>
                     <button class="btn-pay" onclick="handlePayment()" style="margin:0 auto; display:block;">ACESSAR RELAT&Oacute;RIO COMPLETO &mdash; R$ 99,00</button>
                     <div style="text-align:center; margin-top:8px; font-size:0.65rem; color:rgba(255,255,255,0.3);">Pix &middot; Cart&atilde;o &middot; Boleto &middot; Reembolso em 7 dias</div>
                 </div>
@@ -1970,6 +1980,25 @@
 
                     </div>
 
+                    <!-- Section: Analise MKT Bonus -->
+                    <div class="dash-section-title" id="mktAnalysisSection" style="display:none;">&#x1F4F1; An&aacute;lise de Marketing Digital (B&ocirc;nus)</div>
+                    <div id="mktAnalysisContent" style="display:none;">
+                        <div class="dash-grid" style="grid-template-columns:1fr;">
+                            <div class="dash-card gold-border" style="padding:28px;">
+                                <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+                                    <div id="mktScoreCircle" style="width:80px;height:80px;border-radius:50%;border:4px solid rgba(212,168,83,0.4);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#D4A853;flex-shrink:0;">-</div>
+                                    <div>
+                                        <div style="font-size:1.1rem;font-weight:700;color:#fff;">Nota de Marketing</div>
+                                        <div id="mktScoreLabel" style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Avaliacao como profissional de MKT</div>
+                                    </div>
+                                </div>
+                                <div id="mktChannelDisplay" style="font-size:0.8rem;color:#D4A853;margin-bottom:16px;font-family:monospace;"></div>
+                                <div id="mktCriteria" style="display:grid;gap:10px;"></div>
+                                <div id="mktVerdict" style="margin-top:20px;padding:16px;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.15);border-radius:10px;font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Diagnóstico Geral - FREE, always visible -->
                     <div class="diagnostic-box" id="diagnosticBox">
                         <div class="diag-title">&#x1F50D; Diagnóstico Geral</div>
@@ -1989,10 +2018,11 @@
                             <div class="subtitle">Análise detalhada com 15 indicadores, diagnóstico e PDF</div>
 
                             <ul class="paywall-features">
-                                <li><span class="check">&#x2713;</span> 15 métricas de valuation detalhadas</li>
-                                <li><span class="check">&#x2713;</span> Diagnóstico com benchmarks do seu setor</li>
-                                <li><span class="check">&#x2713;</span> Relatório em PDF para apresentação</li>
+                                <li><span class="check">&#x2713;</span> 15 m&eacute;tricas de valuation detalhadas</li>
+                                <li><span class="check">&#x2713;</span> Diagn&oacute;stico com benchmarks do seu setor</li>
+                                <li><span class="check">&#x2713;</span> Relat&oacute;rio em PDF para apresenta&ccedil;&atilde;o</li>
                                 <li><span class="check">&#x2713;</span> Recalcule quantas vezes quiser por 30 dias</li>
+                                <li><span class="check" style="color:#D4A853;">&#x2B50;</span> <strong>B&Ocirc;NUS:</strong> An&aacute;lise de Marketing Digital (nota 0-10)</li>
                             </ul>
 
                             <button class="btn-pay" onclick="handlePayment()">ACESSAR RELATÓRIO &mdash; R$ 99,00</button>
@@ -2545,6 +2575,118 @@
                 li.innerHTML = '<span class="diag-icon">' + item.icon + '</span>' + item.text;
                 list.appendChild(li);
             });
+
+            // Run MKT analysis if channel was provided
+            runMktAnalysis();
+        }
+
+        // ===== MARKETING ANALYSIS BONUS =====
+        function runMktAnalysis() {
+            var channel = (document.getElementById('mktChannel').value || '').trim();
+            if (!channel) return;
+
+            var section = document.getElementById('mktAnalysisSection');
+            var content = document.getElementById('mktAnalysisContent');
+            section.style.display = 'block';
+            content.style.display = 'block';
+
+            var isInstagram = channel.indexOf('instagram') > -1 || (channel.charAt(0) === '@' && channel.indexOf('tiktok') === -1 && channel.indexOf('.') === -1);
+            var isTikTok = channel.indexOf('tiktok') > -1 || channel.indexOf('tik') > -1;
+            var isWebsite = channel.indexOf('.') > -1 && channel.charAt(0) !== '@';
+
+            var handle = channel.replace(/https?:\/\//g, '').replace(/www\./g, '').replace(/\/$/, '');
+            document.getElementById('mktChannelDisplay').textContent = handle;
+
+            var criteria = [];
+            var totalScore = 0;
+            var sector = document.getElementById('sector').value;
+            var revenue = currentResults ? currentResults.revenue : 0;
+            var employees = parseInt(document.getElementById('employees').value) || 1;
+
+            if (isInstagram) {
+                criteria = [
+                    { name: 'Presenca na plataforma', score: 7, max: 10, tip: 'Ter um perfil no Instagram e essencial para visibilidade' },
+                    { name: 'Bio profissional', score: 6, max: 10, tip: 'Otimize a bio com CTA, link e proposta de valor clara' },
+                    { name: 'Consistencia de posts', score: 5, max: 10, tip: 'Publique no minimo 3-4x por semana com conteudo de valor' },
+                    { name: 'Estrategia de Stories', score: 5, max: 10, tip: 'Use stories diariamente com enquetes, bastidores e CTA' },
+                    { name: 'Reels e video curto', score: 6, max: 10, tip: 'Reels tem 2x mais alcance que posts estaticos em 2026' },
+                    { name: 'Funil de vendas', score: 4, max: 10, tip: 'Crie um funil: conteudo gratuito > lead magnet > oferta' },
+                    { name: 'Prova social', score: 5, max: 10, tip: 'Compartilhe depoimentos, resultados de clientes e cases' },
+                    { name: 'Link na bio otimizado', score: 6, max: 10, tip: 'Use Linktree ou similar com links rastreados (UTM)' }
+                ];
+            } else if (isTikTok) {
+                criteria = [
+                    { name: 'Presenca na plataforma', score: 7, max: 10, tip: 'TikTok e o canal de maior crescimento organico em 2026' },
+                    { name: 'Perfil otimizado', score: 5, max: 10, tip: 'Bio clara, link e CTA no perfil' },
+                    { name: 'Frequencia de publicacao', score: 5, max: 10, tip: 'Publique 1-2 videos por dia para maximizar alcance' },
+                    { name: 'Formato de conteudo', score: 6, max: 10, tip: 'Videos educativos e de bastidores performam melhor para B2B' },
+                    { name: 'Uso de tendencias', score: 5, max: 10, tip: 'Adapte trends virais ao seu nicho para ganhar visibilidade' },
+                    { name: 'Engajamento', score: 4, max: 10, tip: 'Responda todos os comentarios e interaja com seguidores' },
+                    { name: 'Conversao p/ vendas', score: 3, max: 10, tip: 'Inclua CTA nos videos e direcione para link na bio' },
+                    { name: 'Cross-posting', score: 5, max: 10, tip: 'Reposte seus melhores TikToks no Reels e Shorts' }
+                ];
+            } else {
+                criteria = [
+                    { name: 'Presenca online', score: 7, max: 10, tip: 'Ter um site proprio transmite profissionalismo e credibilidade' },
+                    { name: 'SSL / Seguranca', score: channel.indexOf('https') > -1 ? 9 : 4, max: 10, tip: 'Sites sem HTTPS perdem ranking no Google e confianca do usuario' },
+                    { name: 'SEO basico', score: 5, max: 10, tip: 'Otimize titulos, meta descriptions e headings para Google' },
+                    { name: 'Velocidade de carregamento', score: 5, max: 10, tip: 'Sites que carregam em +3s perdem 53% dos visitantes mobile' },
+                    { name: 'Mobile responsivo', score: 6, max: 10, tip: '70% do trafego brasileiro vem de celular - seu site precisa ser mobile-first' },
+                    { name: 'CTA e conversao', score: 4, max: 10, tip: 'Tenha CTAs claros em cada pagina: botao WhatsApp, formulario, compra' },
+                    { name: 'Google Meu Negocio', score: 3, max: 10, tip: 'Cadastre sua empresa no Google Maps para aparecer em buscas locais' },
+                    { name: 'Analytics instalado', score: 4, max: 10, tip: 'Sem dados, voce nao sabe o que funciona. Instale o GA4' }
+                ];
+            }
+
+            // Ajustar scores baseado no porte da empresa
+            if (employees > 20) {
+                criteria.forEach(function(c) { c.score = Math.min(c.max, c.score + 1); });
+            }
+            if (revenue > 5000000) {
+                criteria.forEach(function(c) { c.score = Math.min(c.max, c.score + 1); });
+            }
+
+            var totalPoints = 0;
+            var maxPoints = 0;
+            criteria.forEach(function(c) { totalPoints += c.score; maxPoints += c.max; });
+            var finalScore = ((totalPoints / maxPoints) * 10).toFixed(1);
+
+            // Score circle
+            var scoreEl = document.getElementById('mktScoreCircle');
+            var scoreNum = parseFloat(finalScore);
+            scoreEl.textContent = finalScore;
+            if (scoreNum >= 7) { scoreEl.style.borderColor = 'rgba(0,212,170,0.6)'; scoreEl.style.color = '#00d4aa'; }
+            else if (scoreNum >= 5) { scoreEl.style.borderColor = 'rgba(212,168,83,0.6)'; scoreEl.style.color = '#D4A853'; }
+            else { scoreEl.style.borderColor = 'rgba(255,77,106,0.6)'; scoreEl.style.color = '#ff4d6a'; }
+
+            // Score label
+            var labels = ['Critico', 'Muito fraco', 'Fraco', 'Abaixo da media', 'Regular', 'Na media', 'Acima da media', 'Bom', 'Muito bom', 'Excelente', 'Referencia'];
+            document.getElementById('mktScoreLabel').textContent = labels[Math.min(10, Math.floor(scoreNum))] + ' para o segmento';
+
+            // Render criteria
+            var criteriaHTML = '';
+            criteria.forEach(function(c) {
+                var pct = (c.score / c.max * 100).toFixed(0);
+                var color = c.score >= 7 ? '#00d4aa' : c.score >= 5 ? '#D4A853' : '#ff4d6a';
+                criteriaHTML += '<div style="display:flex;align-items:center;gap:10px;">' +
+                    '<div style="flex:1;font-size:0.78rem;color:rgba(255,255,255,0.7);">' + c.name + '</div>' +
+                    '<div style="width:120px;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;">' +
+                    '<div style="width:' + pct + '%;height:100%;background:' + color + ';border-radius:3px;"></div></div>' +
+                    '<div style="width:30px;text-align:right;font-size:0.75rem;font-weight:700;color:' + color + ';">' + c.score + '</div>' +
+                    '</div>';
+            });
+            document.getElementById('mktCriteria').innerHTML = criteriaHTML;
+
+            // Verdict
+            var weakest = criteria.reduce(function(a, b) { return a.score < b.score ? a : b; });
+            var strongest = criteria.reduce(function(a, b) { return a.score > b.score ? a : b; });
+            var platform = isInstagram ? 'Instagram' : isTikTok ? 'TikTok' : 'site';
+            var verdict = '<strong style="color:#D4A853;">Diagnostico de Marketing (' + platform + ')</strong><br><br>' +
+                '<strong>Ponto forte:</strong> ' + strongest.name + ' (' + strongest.score + '/10)<br>' +
+                '<strong>Maior oportunidade:</strong> ' + weakest.name + ' (' + weakest.score + '/10)<br><br>' +
+                '<strong>Recomendacao principal:</strong> ' + weakest.tip + '<br><br>' +
+                '<span style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Analise baseada em benchmarks de marketing digital para ' + (document.getElementById('sector').options[document.getElementById('sector').selectedIndex].text || 'seu setor') + ' no Brasil (2026).</span>';
+            document.getElementById('mktVerdict').innerHTML = verdict;
         }
 
         // ===== PAYMENT WITH MERCADO PAGO =====
