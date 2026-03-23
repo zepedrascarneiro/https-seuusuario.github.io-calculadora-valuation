@@ -1603,15 +1603,6 @@
                         <input type="text" id="companyName" placeholder="Deixe em branco para manter privacidade">
                     </div>
 
-                    <div class="form-group">
-                        <label for="mktChannel">Presenca Digital (Bonus MKT)
-                            <span class="tooltip">
-                                <span class="info-icon">?</span>
-                                <span class="tooltiptext">Insira seu Instagram, TikTok ou site para receber uma analise bonus de marketing digital com nota de 0 a 10.</span>
-                            </span>
-                        </label>
-                        <input type="text" id="mktChannel" placeholder="@seuinstagram, @seutiktok ou www.seusite.com.br">
-                    </div>
 
                     <div class="form-group">
                         <label for="sector">Setor de Atuação
@@ -1853,7 +1844,7 @@
                         <div style="font-size:0.7rem; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:2px; margin-bottom:8px;">Oferta por tempo limitado</div>
                         <div id="countdownTimer" style="font-size:2rem; font-weight:800; color:#D4A853; font-variant-numeric:tabular-nums; margin-bottom:12px;">09:00</div>
                         <div style="font-size:1.15rem; font-weight:700; color:#fff; margin-bottom:6px;">Desbloqueie seu Valuation completo</div>
-                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-bottom:16px;">Valor exato + 15 indicadores + <strong style="color:#D4A853;">B&Ocirc;NUS Auditoria MKT</strong></div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-bottom:16px;">Valor exato + 15 indicadores detalhados</div>
                         <button class="btn-pay" onclick="handlePayment()" style="margin:0 auto; display:block; font-size:1.1rem; padding:18px 48px; width:100%; max-width:400px; animation: pulseBtn 2s infinite;">DESBLOQUEAR POR APENAS R$ 99,00</button>
                         <div style="margin-top:12px; font-size:0.7rem; color:rgba(255,255,255,0.35);">Pix &middot; Cart&atilde;o &middot; Boleto &middot; Acesso imediato</div>
                         <div style="display:flex; justify-content:center; gap:16px; margin-top:12px; font-size:0.7rem; color:rgba(255,255,255,0.3);">
@@ -2076,24 +2067,6 @@
 
                     </div>
 
-                    <!-- Section: Analise MKT Bonus -->
-                    <div class="dash-section-title" id="mktAnalysisSection" style="display:none;">&#x1F4F1; An&aacute;lise de Marketing Digital (B&ocirc;nus)</div>
-                    <div id="mktAnalysisContent" style="display:none;">
-                        <div class="dash-grid" style="grid-template-columns:1fr;">
-                            <div class="dash-card gold-border" style="padding:28px;">
-                                <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-                                    <div id="mktScoreCircle" style="width:80px;height:80px;border-radius:50%;border:4px solid rgba(212,168,83,0.4);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#D4A853;flex-shrink:0;">-</div>
-                                    <div>
-                                        <div id="mktScoreTitleEl" style="font-size:1.1rem;font-weight:700;color:#fff;">Nota de Marketing</div>
-                                        <div id="mktScoreLabel" style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Avaliacao como profissional de MKT</div>
-                                    </div>
-                                </div>
-                                <div id="mktChannelDisplay" style="font-size:0.8rem;color:#D4A853;margin-bottom:16px;font-family:monospace;"></div>
-                                <div id="mktCriteria" style="display:grid;gap:10px;"></div>
-                                <div id="mktVerdict" style="margin-top:20px;padding:16px;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.15);border-radius:10px;font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;"></div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Diagnóstico Geral - FREE, always visible -->
                     <div class="diagnostic-box" id="diagnosticBox">
@@ -2118,7 +2091,6 @@
                                 <li><span class="check">&#x2713;</span> Benchmarks exclusivos do seu setor (dados reais de M&amp;A)</li>
                                 <li><span class="check">&#x2713;</span> Relat&oacute;rio PDF profissional &mdash; pronto para investidores</li>
                                 <li><span class="check">&#x2713;</span> Acesso ilimitado por 30 dias &mdash; recalcule sempre que precisar</li>
-                                <li><span class="check" style="color:#D4A853;">&#x2B50;</span> <strong>B&Ocirc;NUS:</strong> Auditoria de Marketing Digital com nota 0-10 e plano de a&ccedil;&atilde;o</li>
                             </ul>
 
                             <button class="btn-pay" onclick="handlePayment()">ACESSAR RELATÓRIO &mdash; R$ 99,00</button>
@@ -2164,8 +2136,6 @@
                 'step3.title': 'Dados Operacionais', 'step3.subtitle': 'M\u00e9tricas operacionais para uma an\u00e1lise mais precisa (opcionais)',
                 'form.companyName': 'Nome da Empresa (Opcional)', 'form.companyNamePlaceholder': 'Deixe em branco para manter privacidade',
                 'form.companyNameTip': 'O nome da sua empresa aparecera apenas no relatorio em PDF. Este campo e opcional.',
-                'form.mktChannel': 'Presen\u00e7a Digital (B\u00f4nus MKT)', 'form.mktChannelPlaceholder': '@seuinstagram, @seutiktok ou www.seusite.com.br',
-                'form.mktChannelTip': 'Insira seu Instagram, TikTok ou site para receber uma analise bonus de marketing digital com nota de 0 a 10.',
                 'form.sector': 'Setor de Atua\u00e7\u00e3o', 'form.sectorPlaceholder': 'Selecione o setor...',
                 'form.sectorTip': 'Escolha o setor que melhor descreve o seu negocio. Cada setor tem multiplos de mercado diferentes.',
                 'form.employees': 'N\u00famero de Funcion\u00e1rios', 'form.employeesPlaceholder': 'Ex: 25',
@@ -2228,11 +2198,9 @@
                 'paywall.f2': 'Benchmarks exclusivos do seu setor (dados reais de M&A)',
                 'paywall.f3': 'Relat\u00f3rio PDF profissional \u2014 pronto para investidores',
                 'paywall.f4': 'Acesso ilimitado por 30 dias \u2014 recalcule sempre que precisar',
-                'paywall.f5': 'B\u00d4NUS: Auditoria de Marketing Digital com nota 0-10 e plano de a\u00e7\u00e3o',
                 'paywall.button': 'ACESSAR RELAT\u00d3RIO',
                 'paywall.methodology': 'Metodologia validada por +2.000 empresas',
-                'cta.text': 'Desbloqueie o relat\u00f3rio completo com 15 indicadores +',
-                'cta.bonus': 'B\u00d4NUS An\u00e1lise de MKT',
+                'cta.text': 'Valor exato + 15 indicadores detalhados',
                 'cta.button': 'ACESSAR RELAT\u00d3RIO COMPLETO',
                 'cta.methods': 'Pix \u00b7 Cart\u00e3o \u00b7 Boleto \u00b7 Acesso imediato',
                 'diagnostic.title': '\uD83D\uDD0D Diagn\u00f3stico Geral',
@@ -2271,43 +2239,6 @@
                 'diag.invLow': 'Giro de estoque baixo - capital parado em inventario',
                 'diag.sizeAdj': 'Ajuste de porte aplicado: -{v}% (empresas menores tem multiplos mais baixos no mercado de M&A)',
                 'diag.illiquidity': 'Desconto de iliquidez de {v}% aplicado - empresas privadas valem menos que equivalentes listadas em bolsa',
-                'mkt.title': '\uD83D\uDCF1 An\u00e1lise de Marketing Digital (B\u00f4nus)',
-                'mkt.scoreTitle': 'Nota de Marketing', 'mkt.scoreLabel': 'Avaliacao como profissional de MKT',
-                'mkt.diagTitle': 'Diagnostico de Marketing',
-                'mkt.strongPoint': 'Ponto forte:', 'mkt.opportunity': 'Maior oportunidade:',
-                'mkt.recommendation': 'Recomendacao principal:',
-                'mkt.benchmarkNote': 'Analise baseada em benchmarks de marketing digital para {s} ({y}).',
-                'mkt.labels': ['Critico','Muito fraco','Fraco','Abaixo da media','Regular','Na media','Acima da media','Bom','Muito bom','Excelente','Referencia'],
-                'mkt.ig': [
-                    { name: 'Presenca na plataforma', tip: 'Ter um perfil no Instagram e essencial para visibilidade' },
-                    { name: 'Bio profissional', tip: 'Otimize a bio com CTA, link e proposta de valor clara' },
-                    { name: 'Consistencia de posts', tip: 'Publique no minimo 3-4x por semana com conteudo de valor' },
-                    { name: 'Estrategia de Stories', tip: 'Use stories diariamente com enquetes, bastidores e CTA' },
-                    { name: 'Reels e video curto', tip: 'Reels tem 2x mais alcance que posts estaticos em 2026' },
-                    { name: 'Funil de vendas', tip: 'Crie um funil: conteudo gratuito > lead magnet > oferta' },
-                    { name: 'Prova social', tip: 'Compartilhe depoimentos, resultados de clientes e cases' },
-                    { name: 'Link na bio otimizado', tip: 'Use Linktree ou similar com links rastreados (UTM)' }
-                ],
-                'mkt.tt': [
-                    { name: 'Presenca na plataforma', tip: 'TikTok e o canal de maior crescimento organico em 2026' },
-                    { name: 'Perfil otimizado', tip: 'Bio clara, link e CTA no perfil' },
-                    { name: 'Frequencia de publicacao', tip: 'Publique 1-2 videos por dia para maximizar alcance' },
-                    { name: 'Formato de conteudo', tip: 'Videos educativos e de bastidores performam melhor para B2B' },
-                    { name: 'Uso de tendencias', tip: 'Adapte trends virais ao seu nicho para ganhar visibilidade' },
-                    { name: 'Engajamento', tip: 'Responda todos os comentarios e interaja com seguidores' },
-                    { name: 'Conversao p/ vendas', tip: 'Inclua CTA nos videos e direcione para link na bio' },
-                    { name: 'Cross-posting', tip: 'Reposte seus melhores TikToks no Reels e Shorts' }
-                ],
-                'mkt.web': [
-                    { name: 'Presenca online', tip: 'Ter um site proprio transmite profissionalismo e credibilidade' },
-                    { name: 'SSL / Seguranca', tip: 'Sites sem HTTPS perdem ranking no Google e confianca do usuario' },
-                    { name: 'SEO basico', tip: 'Otimize titulos, meta descriptions e headings para Google' },
-                    { name: 'Velocidade de carregamento', tip: 'Sites que carregam em +3s perdem 53% dos visitantes mobile' },
-                    { name: 'Mobile responsivo', tip: '70% do trafego brasileiro vem de celular - seu site precisa ser mobile-first' },
-                    { name: 'CTA e conversao', tip: 'Tenha CTAs claros em cada pagina: botao WhatsApp, formulario, compra' },
-                    { name: 'Google Meu Negocio', tip: 'Cadastre sua empresa no Google Maps para aparecer em buscas locais' },
-                    { name: 'Analytics instalado', tip: 'Sem dados, voce nao sabe o que funciona. Instale o GA4' }
-                ],
                 'sector.tecnologia': 'Tecnologia', 'sector.saude': 'Sa\u00fade', 'sector.educacao': 'Educa\u00e7\u00e3o',
                 'sector.alimentacao': 'Alimenta\u00e7\u00e3o & Bebidas', 'sector.varejo': 'Varejo', 'sector.servicos': 'Servi\u00e7os',
                 'sector.construcao': 'Constru\u00e7\u00e3o', 'sector.industria': 'Ind\u00fastria', 'sector.agronegocio': 'Agroneg\u00f3cio',
@@ -2326,8 +2257,6 @@
                 'step3.title': 'Operational Data', 'step3.subtitle': 'Operational metrics for a more precise analysis (optional)',
                 'form.companyName': 'Company Name (Optional)', 'form.companyNamePlaceholder': 'Leave blank for privacy',
                 'form.companyNameTip': 'Your company name will only appear in the PDF report. This field is optional.',
-                'form.mktChannel': 'Digital Presence (MKT Bonus)', 'form.mktChannelPlaceholder': '@yourinstagram, @yourtiktok or www.yoursite.com',
-                'form.mktChannelTip': 'Enter your Instagram, TikTok or website to get a bonus digital marketing analysis scored 0-10.',
                 'form.sector': 'Industry Sector', 'form.sectorPlaceholder': 'Select sector...',
                 'form.sectorTip': 'Choose the sector that best describes your business. Each sector has different market multiples.',
                 'form.employees': 'Number of Employees', 'form.employeesPlaceholder': 'e.g. 25',
@@ -2390,11 +2319,9 @@
                 'paywall.f2': 'Exclusive benchmarks for your sector (real M&A data)',
                 'paywall.f3': 'Professional PDF report \u2014 investor-ready',
                 'paywall.f4': 'Unlimited access for 30 days \u2014 recalculate anytime',
-                'paywall.f5': 'BONUS: Digital Marketing Audit scored 0-10 with action plan',
                 'paywall.button': 'ACCESS FULL REPORT',
                 'paywall.methodology': 'Methodology validated by 2,000+ companies',
-                'cta.text': 'Unlock the full report with 15 indicators +',
-                'cta.bonus': 'BONUS MKT Analysis',
+                'cta.text': 'Exact value + 15 detailed indicators',
                 'cta.button': 'ACCESS FULL REPORT',
                 'cta.methods': 'PayPal \u00b7 Credit Card \u00b7 Instant access',
                 'diagnostic.title': '\uD83D\uDD0D General Diagnostic',
@@ -2433,43 +2360,6 @@
                 'diag.invLow': 'Low inventory turnover - capital stuck in inventory',
                 'diag.sizeAdj': 'Size adjustment applied: -{v}% (smaller companies have lower M&A multiples)',
                 'diag.illiquidity': 'Illiquidity discount of {v}% applied - private companies are worth less than publicly listed equivalents',
-                'mkt.title': '\uD83D\uDCF1 Digital Marketing Analysis (Bonus)',
-                'mkt.scoreTitle': 'Marketing Score', 'mkt.scoreLabel': 'Professional MKT assessment',
-                'mkt.diagTitle': 'Marketing Diagnostic',
-                'mkt.strongPoint': 'Strength:', 'mkt.opportunity': 'Biggest opportunity:',
-                'mkt.recommendation': 'Key recommendation:',
-                'mkt.benchmarkNote': 'Analysis based on digital marketing benchmarks for {s} ({y}).',
-                'mkt.labels': ['Critical','Very weak','Weak','Below average','Fair','Average','Above average','Good','Very good','Excellent','Reference'],
-                'mkt.ig': [
-                    { name: 'Platform presence', tip: 'Having an Instagram profile is essential for visibility' },
-                    { name: 'Professional bio', tip: 'Optimize your bio with a CTA, link and clear value proposition' },
-                    { name: 'Posting consistency', tip: 'Post at least 3-4x per week with valuable content' },
-                    { name: 'Stories strategy', tip: 'Use stories daily with polls, behind-the-scenes and CTAs' },
-                    { name: 'Reels & short video', tip: 'Reels get 2x more reach than static posts in 2026' },
-                    { name: 'Sales funnel', tip: 'Create a funnel: free content > lead magnet > offer' },
-                    { name: 'Social proof', tip: 'Share testimonials, client results and case studies' },
-                    { name: 'Optimized link in bio', tip: 'Use Linktree or similar with tracked links (UTM)' }
-                ],
-                'mkt.tt': [
-                    { name: 'Platform presence', tip: 'TikTok is the fastest growing organic channel in 2026' },
-                    { name: 'Optimized profile', tip: 'Clear bio, link and CTA on profile' },
-                    { name: 'Posting frequency', tip: 'Post 1-2 videos per day to maximize reach' },
-                    { name: 'Content format', tip: 'Educational and behind-the-scenes videos perform best for B2B' },
-                    { name: 'Trend usage', tip: 'Adapt viral trends to your niche for visibility' },
-                    { name: 'Engagement', tip: 'Reply to all comments and interact with followers' },
-                    { name: 'Sales conversion', tip: 'Include CTAs in videos and drive to link in bio' },
-                    { name: 'Cross-posting', tip: 'Repost your best TikToks to Reels and Shorts' }
-                ],
-                'mkt.web': [
-                    { name: 'Online presence', tip: 'Having your own website conveys professionalism and credibility' },
-                    { name: 'SSL / Security', tip: 'Sites without HTTPS lose Google ranking and user trust' },
-                    { name: 'Basic SEO', tip: 'Optimize titles, meta descriptions and headings for Google' },
-                    { name: 'Load speed', tip: 'Sites that take 3s+ to load lose 53% of mobile visitors' },
-                    { name: 'Mobile responsive', tip: '70%+ of traffic comes from mobile - your site must be mobile-first' },
-                    { name: 'CTA & conversion', tip: 'Have clear CTAs on every page: WhatsApp button, form, buy' },
-                    { name: 'Google My Business', tip: 'Register on Google Maps to appear in local searches' },
-                    { name: 'Analytics installed', tip: 'Without data you don\'t know what works. Install GA4' }
-                ],
                 'sector.tecnologia': 'Technology', 'sector.saude': 'Healthcare', 'sector.educacao': 'Education',
                 'sector.alimentacao': 'Food & Beverage', 'sector.varejo': 'Retail', 'sector.servicos': 'Services',
                 'sector.construcao': 'Construction', 'sector.industria': 'Manufacturing', 'sector.agronegocio': 'Agribusiness',
@@ -2488,8 +2378,6 @@
                 'step3.title': 'Datos Operativos', 'step3.subtitle': 'M\u00e9tricas operativas para un an\u00e1lisis m\u00e1s preciso (opcionales)',
                 'form.companyName': 'Nombre de la Empresa (Opcional)', 'form.companyNamePlaceholder': 'Deja en blanco para mantener privacidad',
                 'form.companyNameTip': 'El nombre de tu empresa solo aparecera en el reporte PDF. Este campo es opcional.',
-                'form.mktChannel': 'Presencia Digital (Bonus MKT)', 'form.mktChannelPlaceholder': '@tuinstagram, @tutiktok o www.tusitio.com',
-                'form.mktChannelTip': 'Ingresa tu Instagram, TikTok o sitio web para un analisis bonus de marketing digital.',
                 'form.sector': 'Sector', 'form.sectorPlaceholder': 'Selecciona el sector...',
                 'form.sectorTip': 'Elige el sector que mejor describe tu negocio.',
                 'form.employees': 'N\u00famero de Empleados', 'form.employeesPlaceholder': 'Ej: 25',
@@ -2552,11 +2440,9 @@
                 'paywall.f2': 'Benchmarks exclusivos de tu sector (datos reales de M&A)',
                 'paywall.f3': 'Reporte PDF profesional \u2014 listo para inversionistas',
                 'paywall.f4': 'Acceso ilimitado por 30 d\u00edas \u2014 recalcula cuando quieras',
-                'paywall.f5': 'BONUS: Auditor\u00eda de Marketing Digital con nota 0-10 y plan de acci\u00f3n',
                 'paywall.button': 'ACCEDER AL REPORTE',
                 'paywall.methodology': 'Metodolog\u00eda validada por +2.000 empresas',
-                'cta.text': 'Desbloquea el reporte completo con 15 indicadores +',
-                'cta.bonus': 'BONUS An\u00e1lisis de MKT',
+                'cta.text': 'Valor exacto + 15 indicadores detallados',
                 'cta.button': 'ACCEDER AL REPORTE COMPLETO',
                 'cta.methods': 'PayPal \u00b7 Tarjeta \u00b7 Acceso inmediato',
                 'diagnostic.title': '\uD83D\uDD0D Diagn\u00f3stico General',
@@ -2595,43 +2481,6 @@
                 'diag.invLow': 'Rotaci\u00f3n de inventario baja - capital atrapado en inventario',
                 'diag.sizeAdj': 'Ajuste por tama\u00f1o aplicado: -{v}% (empresas menores tienen m\u00faltiplos m\u00e1s bajos)',
                 'diag.illiquidity': 'Descuento de iliquidez de {v}% aplicado - empresas privadas valen menos que las listadas en bolsa',
-                'mkt.title': '\uD83D\uDCF1 An\u00e1lisis de Marketing Digital (Bonus)',
-                'mkt.scoreTitle': 'Nota de Marketing', 'mkt.scoreLabel': 'Evaluaci\u00f3n profesional de MKT',
-                'mkt.diagTitle': 'Diagn\u00f3stico de Marketing',
-                'mkt.strongPoint': 'Punto fuerte:', 'mkt.opportunity': 'Mayor oportunidad:',
-                'mkt.recommendation': 'Recomendaci\u00f3n principal:',
-                'mkt.benchmarkNote': 'An\u00e1lisis basado en benchmarks de marketing digital para {s} ({y}).',
-                'mkt.labels': ['Cr\u00edtico','Muy d\u00e9bil','D\u00e9bil','Bajo promedio','Regular','Promedio','Sobre promedio','Bueno','Muy bueno','Excelente','Referencia'],
-                'mkt.ig': [
-                    { name: 'Presencia en plataforma', tip: 'Tener perfil en Instagram es esencial para visibilidad' },
-                    { name: 'Bio profesional', tip: 'Optimiza tu bio con CTA, link y propuesta de valor' },
-                    { name: 'Consistencia de posts', tip: 'Publica al menos 3-4x por semana con contenido de valor' },
-                    { name: 'Estrategia de Stories', tip: 'Usa stories diariamente con encuestas y CTAs' },
-                    { name: 'Reels y video corto', tip: 'Reels tienen 2x m\u00e1s alcance que posts est\u00e1ticos en 2026' },
-                    { name: 'Embudo de ventas', tip: 'Crea un embudo: contenido gratis > lead magnet > oferta' },
-                    { name: 'Prueba social', tip: 'Comparte testimonios y casos de \u00e9xito de clientes' },
-                    { name: 'Link en bio optimizado', tip: 'Usa Linktree o similar con links rastreados (UTM)' }
-                ],
-                'mkt.tt': [
-                    { name: 'Presencia en plataforma', tip: 'TikTok es el canal de mayor crecimiento org\u00e1nico en 2026' },
-                    { name: 'Perfil optimizado', tip: 'Bio clara, link y CTA en el perfil' },
-                    { name: 'Frecuencia de publicaci\u00f3n', tip: 'Publica 1-2 videos por d\u00eda para maximizar alcance' },
-                    { name: 'Formato de contenido', tip: 'Videos educativos y de bastidores funcionan mejor para B2B' },
-                    { name: 'Uso de tendencias', tip: 'Adapta trends virales a tu nicho' },
-                    { name: 'Engagement', tip: 'Responde todos los comentarios e interact\u00faa con seguidores' },
-                    { name: 'Conversi\u00f3n a ventas', tip: 'Incluye CTAs en videos y dirige al link en bio' },
-                    { name: 'Cross-posting', tip: 'Reposta tus mejores TikToks en Reels y Shorts' }
-                ],
-                'mkt.web': [
-                    { name: 'Presencia online', tip: 'Tener sitio propio transmite profesionalismo y credibilidad' },
-                    { name: 'SSL / Seguridad', tip: 'Sitios sin HTTPS pierden ranking en Google y confianza' },
-                    { name: 'SEO b\u00e1sico', tip: 'Optimiza t\u00edtulos, meta descriptions y headings para Google' },
-                    { name: 'Velocidad de carga', tip: 'Sitios que tardan +3s pierden 53% de visitantes m\u00f3viles' },
-                    { name: 'Mobile responsivo', tip: '70%+ del tr\u00e1fico viene de m\u00f3vil - tu sitio debe ser mobile-first' },
-                    { name: 'CTA y conversi\u00f3n', tip: 'Ten CTAs claros en cada p\u00e1gina' },
-                    { name: 'Google Mi Negocio', tip: 'Registra tu empresa en Google Maps para b\u00fasquedas locales' },
-                    { name: 'Analytics instalado', tip: 'Sin datos no sabes qu\u00e9 funciona. Instala GA4' }
-                ],
                 'sector.tecnologia': 'Tecnolog\u00eda', 'sector.saude': 'Salud', 'sector.educacao': 'Educaci\u00f3n',
                 'sector.alimentacao': 'Alimentaci\u00f3n y Bebidas', 'sector.varejo': 'Retail', 'sector.servicos': 'Servicios',
                 'sector.construcao': 'Construcci\u00f3n', 'sector.industria': 'Industria', 'sector.agronegocio': 'Agroindustria',
@@ -2650,8 +2499,6 @@
                 'step3.title': 'Donn\u00e9es Op\u00e9rationnelles', 'step3.subtitle': 'M\u00e9triques op\u00e9rationnelles pour une analyse plus pr\u00e9cise (optionnel)',
                 'form.companyName': 'Nom de l\'Entreprise (Optionnel)', 'form.companyNamePlaceholder': 'Laissez vide pour la confidentialit\u00e9',
                 'form.companyNameTip': 'Le nom de votre entreprise n\'appara\u00eetra que dans le rapport PDF.',
-                'form.mktChannel': 'Pr\u00e9sence Digitale (Bonus MKT)', 'form.mktChannelPlaceholder': '@votreinstagram, @votretiktok ou www.votresite.com',
-                'form.mktChannelTip': 'Entrez votre Instagram, TikTok ou site web pour une analyse bonus marketing digital.',
                 'form.sector': 'Secteur d\'Activit\u00e9', 'form.sectorPlaceholder': 'S\u00e9lectionnez le secteur...',
                 'form.sectorTip': 'Choisissez le secteur qui d\u00e9crit le mieux votre entreprise.',
                 'form.employees': 'Nombre d\'Employ\u00e9s', 'form.employeesPlaceholder': 'Ex : 25',
@@ -2714,11 +2561,9 @@
                 'paywall.f2': 'Benchmarks exclusifs de votre secteur (donn\u00e9es r\u00e9elles de M&A)',
                 'paywall.f3': 'Rapport PDF professionnel \u2014 pr\u00eat pour les investisseurs',
                 'paywall.f4': 'Acc\u00e8s illimit\u00e9 pendant 30 jours \u2014 recalculez quand vous voulez',
-                'paywall.f5': 'BONUS : Audit Marketing Digital not\u00e9 0-10 avec plan d\'action',
                 'paywall.button': 'ACC\u00c9DER AU RAPPORT',
                 'paywall.methodology': 'M\u00e9thodologie valid\u00e9e par +2 000 entreprises',
-                'cta.text': 'D\u00e9bloquez le rapport complet avec 15 indicateurs +',
-                'cta.bonus': 'BONUS Analyse MKT',
+                'cta.text': 'Valeur exacte + 15 indicateurs d\u00e9taill\u00e9s',
                 'cta.button': 'ACC\u00c9DER AU RAPPORT COMPLET',
                 'cta.methods': 'PayPal \u00b7 Carte bancaire \u00b7 Acc\u00e8s imm\u00e9diat',
                 'diagnostic.title': '\uD83D\uDD0D Diagnostic G\u00e9n\u00e9ral',
@@ -2757,43 +2602,6 @@
                 'diag.invLow': 'Rotation des stocks faible - capital immobilis\u00e9 en stock',
                 'diag.sizeAdj': 'Ajustement de taille appliqu\u00e9 : -{v}% (les plus petites entreprises ont des multiples plus bas)',
                 'diag.illiquidity': 'D\u00e9cote d\'illiquidit\u00e9 de {v}% appliqu\u00e9e - les entreprises priv\u00e9es valent moins que les \u00e9quivalents cot\u00e9s',
-                'mkt.title': '\uD83D\uDCF1 Analyse Marketing Digital (Bonus)',
-                'mkt.scoreTitle': 'Note Marketing', 'mkt.scoreLabel': '\u00c9valuation professionnelle MKT',
-                'mkt.diagTitle': 'Diagnostic Marketing',
-                'mkt.strongPoint': 'Point fort :', 'mkt.opportunity': 'Plus grande opportunit\u00e9 :',
-                'mkt.recommendation': 'Recommandation principale :',
-                'mkt.benchmarkNote': 'Analyse bas\u00e9e sur les benchmarks marketing digital pour {s} ({y}).',
-                'mkt.labels': ['Critique','Tr\u00e8s faible','Faible','Sous la moyenne','Passable','Moyen','Au-dessus','Bon','Tr\u00e8s bon','Excellent','R\u00e9f\u00e9rence'],
-                'mkt.ig': [
-                    { name: 'Pr\u00e9sence sur la plateforme', tip: 'Avoir un profil Instagram est essentiel pour la visibilit\u00e9' },
-                    { name: 'Bio professionnelle', tip: 'Optimisez votre bio avec un CTA, lien et proposition de valeur' },
-                    { name: 'R\u00e9gularit\u00e9 des posts', tip: 'Publiez au moins 3-4x par semaine avec du contenu de valeur' },
-                    { name: 'Strat\u00e9gie Stories', tip: 'Utilisez les stories quotidiennement avec sondages et CTAs' },
-                    { name: 'Reels et vid\u00e9o courte', tip: 'Les Reels ont 2x plus de port\u00e9e que les posts statiques en 2026' },
-                    { name: 'Tunnel de vente', tip: 'Cr\u00e9ez un tunnel : contenu gratuit > lead magnet > offre' },
-                    { name: 'Preuve sociale', tip: 'Partagez des t\u00e9moignages et des \u00e9tudes de cas clients' },
-                    { name: 'Lien en bio optimis\u00e9', tip: 'Utilisez Linktree ou similaire avec liens trac\u00e9s (UTM)' }
-                ],
-                'mkt.tt': [
-                    { name: 'Pr\u00e9sence sur la plateforme', tip: 'TikTok est le canal \u00e0 plus forte croissance organique en 2026' },
-                    { name: 'Profil optimis\u00e9', tip: 'Bio claire, lien et CTA sur le profil' },
-                    { name: 'Fr\u00e9quence de publication', tip: 'Publiez 1-2 vid\u00e9os par jour pour maximiser la port\u00e9e' },
-                    { name: 'Format de contenu', tip: 'Les vid\u00e9os \u00e9ducatives et de coulisses performent mieux en B2B' },
-                    { name: 'Utilisation des tendances', tip: 'Adaptez les tendances virales \u00e0 votre niche' },
-                    { name: 'Engagement', tip: 'R\u00e9pondez \u00e0 tous les commentaires et interagissez' },
-                    { name: 'Conversion en ventes', tip: 'Incluez des CTAs dans les vid\u00e9os et renvoyez au lien en bio' },
-                    { name: 'Cross-posting', tip: 'Repostez vos meilleurs TikToks sur Reels et Shorts' }
-                ],
-                'mkt.web': [
-                    { name: 'Pr\u00e9sence en ligne', tip: 'Avoir son propre site transmet professionnalisme et cr\u00e9dibilit\u00e9' },
-                    { name: 'SSL / S\u00e9curit\u00e9', tip: 'Les sites sans HTTPS perdent en r\u00e9f\u00e9rencement et en confiance' },
-                    { name: 'SEO de base', tip: 'Optimisez titres, m\u00e9ta descriptions et balises pour Google' },
-                    { name: 'Vitesse de chargement', tip: 'Les sites qui mettent +3s perdent 53% des visiteurs mobiles' },
-                    { name: 'Responsive mobile', tip: '70%+ du trafic vient du mobile - votre site doit \u00eatre mobile-first' },
-                    { name: 'CTA et conversion', tip: 'Ayez des CTAs clairs sur chaque page' },
-                    { name: 'Google My Business', tip: 'Inscrivez votre entreprise sur Google Maps pour les recherches locales' },
-                    { name: 'Analytics install\u00e9', tip: 'Sans donn\u00e9es, vous ne savez pas ce qui fonctionne. Installez GA4' }
-                ],
                 'sector.tecnologia': 'Technologie', 'sector.saude': 'Sant\u00e9', 'sector.educacao': '\u00c9ducation',
                 'sector.alimentacao': 'Agroalimentaire', 'sector.varejo': 'Commerce de D\u00e9tail', 'sector.servicos': 'Services',
                 'sector.construcao': 'Construction', 'sector.industria': 'Industrie', 'sector.agronegocio': 'Agroalimentaire',
@@ -2812,8 +2620,6 @@
                 'step3.title': '\u0938\u0902\u091a\u093e\u0932\u0928 \u0921\u0947\u091f\u093e', 'step3.subtitle': '\u0905\u0927\u093f\u0915 \u0938\u091f\u0940\u0915 \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0923 \u0915\u0947 \u0932\u093f\u090f \u0938\u0902\u091a\u093e\u0932\u0928 \u092e\u0947\u091f\u094d\u0930\u093f\u0915\u094d\u0938 (\u0935\u0948\u0915\u0932\u094d\u092a\u093f\u0915)',
                 'form.companyName': '\u0915\u0902\u092a\u0928\u0940 \u0915\u093e \u0928\u093e\u092e (\u0935\u0948\u0915\u0932\u094d\u092a\u093f\u0915)', 'form.companyNamePlaceholder': '\u0917\u094b\u092a\u0928\u0940\u092f\u0924\u093e \u0915\u0947 \u0932\u093f\u090f \u0916\u093e\u0932\u0940 \u091b\u094b\u0921\u093c\u0947\u0902',
                 'form.companyNameTip': 'Your company name will only appear in the PDF report.',
-                'form.mktChannel': '\u0921\u093f\u091c\u093f\u091f\u0932 \u0909\u092a\u0938\u094d\u0925\u093f\u0924\u093f (MKT \u092c\u094b\u0928\u0938)', 'form.mktChannelPlaceholder': '@yourinstagram, @yourtiktok or www.yoursite.com',
-                'form.mktChannelTip': 'Enter your Instagram, TikTok or website for a bonus digital marketing analysis.',
                 'form.sector': '\u0909\u0926\u094d\u092f\u094b\u0917 \u0915\u094d\u0937\u0947\u0924\u094d\u0930', 'form.sectorPlaceholder': '\u0915\u094d\u0937\u0947\u0924\u094d\u0930 \u091a\u0941\u0928\u0947\u0902...',
                 'form.sectorTip': 'Choose the sector that best describes your business.',
                 'form.employees': '\u0915\u0930\u094d\u092e\u091a\u093e\u0930\u093f\u092f\u094b\u0902 \u0915\u0940 \u0938\u0902\u0916\u094d\u092f\u093e', 'form.employeesPlaceholder': '\u0909\u0926\u093e: 25',
@@ -2876,11 +2682,9 @@
                 'paywall.f2': '\u0906\u092a\u0915\u0947 \u0915\u094d\u0937\u0947\u0924\u094d\u0930 \u0915\u0947 \u0935\u093f\u0936\u0947\u0937 \u092c\u0947\u0902\u091a\u092e\u093e\u0930\u094d\u0915 (\u0935\u093e\u0938\u094d\u0924\u0935\u093f\u0915 M&A \u0921\u0947\u091f\u093e)',
                 'paywall.f3': '\u092a\u0947\u0936\u0947\u0935\u0930 PDF \u0930\u093f\u092a\u094b\u0930\u094d\u091f \u2014 \u0928\u093f\u0935\u0947\u0936\u0915\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0924\u0948\u092f\u093e\u0930',
                 'paywall.f4': '30 \u0926\u093f\u0928\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0905\u0938\u0940\u092e\u093f\u0924 \u092a\u0939\u0941\u0901\u091a \u2014 \u0915\u092d\u0940 \u092d\u0940 \u092a\u0941\u0928\u0930\u094d\u0917\u0923\u0928\u093e \u0915\u0930\u0947\u0902',
-                'paywall.f5': '\u092c\u094b\u0928\u0938: \u0921\u093f\u091c\u093f\u091f\u0932 \u092e\u093e\u0930\u094d\u0915\u0947\u091f\u093f\u0902\u0917 \u0911\u0921\u093f\u091f 0-10 \u0938\u094d\u0915\u094b\u0930 \u0914\u0930 \u0915\u093e\u0930\u094d\u092f \u092f\u094b\u091c\u0928\u093e',
                 'paywall.button': '\u0930\u093f\u092a\u094b\u0930\u094d\u091f \u090f\u0915\u094d\u0938\u0947\u0938 \u0915\u0930\u0947\u0902',
                 'paywall.methodology': '2,000+ \u0915\u0902\u092a\u0928\u093f\u092f\u094b\u0902 \u0926\u094d\u0935\u093e\u0930\u093e \u092e\u093e\u0928\u094d\u092f \u092a\u0926\u094d\u0927\u0924\u093f',
-                'cta.text': '15 \u0938\u0902\u0915\u0947\u0924\u0915\u094b\u0902 \u0915\u0947 \u0938\u093e\u0925 \u092a\u0942\u0930\u094d\u0923 \u0930\u093f\u092a\u094b\u0930\u094d\u091f \u0905\u0928\u0932\u0949\u0915 \u0915\u0930\u0947\u0902 +',
-                'cta.bonus': '\u092c\u094b\u0928\u0938 MKT \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0923',
+                'cta.text': '15 \u0938\u0902\u0915\u0947\u0924\u0915\u094b\u0902 \u0915\u0947 \u0938\u093e\u0925 \u092a\u0942\u0930\u094d\u0923 \u0930\u093f\u092a\u094b\u0930\u094d\u091f \u0905\u0928\u0932\u0949\u0915 \u0915\u0930\u0947\u0902',
                 'cta.button': '\u092a\u0942\u0930\u094d\u0923 \u0930\u093f\u092a\u094b\u0930\u094d\u091f \u090f\u0915\u094d\u0938\u0947\u0938 \u0915\u0930\u0947\u0902',
                 'cta.methods': 'PayPal \u00b7 Credit Card \u00b7 Instant access',
                 'diagnostic.title': '\uD83D\uDD0D \u0938\u093e\u092e\u093e\u0928\u094d\u092f \u0928\u093f\u0926\u093e\u0928',
@@ -2919,43 +2723,6 @@
                 'diag.invLow': 'Low inventory turnover - capital stuck in inventory',
                 'diag.sizeAdj': 'Size adjustment applied: -{v}% (smaller companies have lower M&A multiples)',
                 'diag.illiquidity': 'Illiquidity discount of {v}% applied - private companies worth less than listed equivalents',
-                'mkt.title': '\uD83D\uDCF1 Digital Marketing Analysis (Bonus)',
-                'mkt.scoreTitle': 'Marketing Score', 'mkt.scoreLabel': 'Professional MKT assessment',
-                'mkt.diagTitle': 'Marketing Diagnostic',
-                'mkt.strongPoint': 'Strength:', 'mkt.opportunity': 'Biggest opportunity:',
-                'mkt.recommendation': 'Key recommendation:',
-                'mkt.benchmarkNote': 'Analysis based on digital marketing benchmarks for {s} ({y}).',
-                'mkt.labels': ['Critical','Very weak','Weak','Below average','Fair','Average','Above average','Good','Very good','Excellent','Reference'],
-                'mkt.ig': [
-                    { name: 'Platform presence', tip: 'Having an Instagram profile is essential for visibility' },
-                    { name: 'Professional bio', tip: 'Optimize your bio with a CTA, link and value proposition' },
-                    { name: 'Posting consistency', tip: 'Post at least 3-4x per week' },
-                    { name: 'Stories strategy', tip: 'Use stories daily with polls and CTAs' },
-                    { name: 'Reels & short video', tip: 'Reels get 2x more reach than static posts' },
-                    { name: 'Sales funnel', tip: 'Create a funnel: free content > lead magnet > offer' },
-                    { name: 'Social proof', tip: 'Share testimonials and case studies' },
-                    { name: 'Optimized link in bio', tip: 'Use Linktree with tracked links (UTM)' }
-                ],
-                'mkt.tt': [
-                    { name: 'Platform presence', tip: 'TikTok is the fastest growing organic channel' },
-                    { name: 'Optimized profile', tip: 'Clear bio, link and CTA on profile' },
-                    { name: 'Posting frequency', tip: 'Post 1-2 videos per day' },
-                    { name: 'Content format', tip: 'Educational videos perform best for B2B' },
-                    { name: 'Trend usage', tip: 'Adapt viral trends to your niche' },
-                    { name: 'Engagement', tip: 'Reply to all comments' },
-                    { name: 'Sales conversion', tip: 'Include CTAs in videos' },
-                    { name: 'Cross-posting', tip: 'Repost best TikToks to Reels and Shorts' }
-                ],
-                'mkt.web': [
-                    { name: 'Online presence', tip: 'Having your own website conveys credibility' },
-                    { name: 'SSL / Security', tip: 'Sites without HTTPS lose ranking and trust' },
-                    { name: 'Basic SEO', tip: 'Optimize titles and meta descriptions' },
-                    { name: 'Load speed', tip: 'Sites taking 3s+ lose 53% of mobile visitors' },
-                    { name: 'Mobile responsive', tip: '70%+ of traffic comes from mobile' },
-                    { name: 'CTA & conversion', tip: 'Have clear CTAs on every page' },
-                    { name: 'Google My Business', tip: 'Register on Google Maps for local searches' },
-                    { name: 'Analytics installed', tip: 'Without data you don\'t know what works' }
-                ],
                 'sector.tecnologia': '\u091f\u0947\u0915\u094d\u0928\u094b\u0932\u0949\u091c\u0940', 'sector.saude': '\u0938\u094d\u0935\u093e\u0938\u094d\u0925\u094d\u092f \u0938\u0947\u0935\u093e', 'sector.educacao': '\u0936\u093f\u0915\u094d\u0937\u093e',
                 'sector.alimentacao': '\u0916\u093e\u0926\u094d\u092f \u0914\u0930 \u092a\u0947\u092f', 'sector.varejo': '\u0916\u0941\u0926\u0930\u093e', 'sector.servicos': '\u0938\u0947\u0935\u093e\u090f\u0902',
                 'sector.construcao': '\u0928\u093f\u0930\u094d\u092e\u093e\u0923', 'sector.industria': '\u0935\u093f\u0928\u093f\u0930\u094d\u092e\u093e\u0923', 'sector.agronegocio': '\u0915\u0943\u0937\u093f \u0935\u094d\u092f\u0935\u0938\u093e\u092f',
@@ -3044,7 +2811,7 @@
 
             // Form labels by field ID mapping
             var labelMap = {
-                'companyName': 'form.companyName', 'mktChannel': 'form.mktChannel', 'sector': 'form.sector',
+                'companyName': 'form.companyName', 'sector': 'form.sector',
                 'employees': 'form.employees', 'marketPosition': 'form.marketPosition', 'growth': 'form.growth',
                 'revenue': 'form.revenue', 'ebitda': 'form.ebitda', 'netIncome': 'form.netIncome',
                 'assets': 'form.assets', 'debt': 'form.debt',
@@ -3248,12 +3015,11 @@
             var pwSub = document.querySelector('.paywall-card .subtitle');
             if (pwSub) pwSub.textContent = t('paywall.subtitle');
             var pwFeatures = document.querySelectorAll('.paywall-features li');
-            ['paywall.f1','paywall.f2','paywall.f3','paywall.f4','paywall.f5'].forEach(function(fk, idx) {
+            ['paywall.f1','paywall.f2','paywall.f3','paywall.f4'].forEach(function(fk, idx) {
                 if (pwFeatures[idx]) {
                     var check = pwFeatures[idx].querySelector('.check');
                     var checkHTML = check ? check.outerHTML : '';
-                    var strong = fk === 'paywall.f5' ? '<strong>' + t(fk) + '</strong>' : t(fk);
-                    pwFeatures[idx].innerHTML = checkHTML + ' ' + (fk === 'paywall.f5' ? t(fk) : t(fk));
+                    pwFeatures[idx].innerHTML = checkHTML + ' ' + t(fk);
                 }
             });
             var pwBtn = document.querySelector('.paywall-overlay .btn-pay');
@@ -3267,7 +3033,7 @@
             var ctaDiv = document.getElementById('ctaInline');
             if (ctaDiv) {
                 var ctaText = ctaDiv.querySelector('div > div:first-child');
-                if (ctaText) ctaText.innerHTML = t('cta.text') + ' <strong style="color:#D4A853;">' + t('cta.bonus') + '</strong>';
+                if (ctaText) ctaText.innerHTML = t('cta.text');
                 var ctaBtn = ctaDiv.querySelector('.btn-pay');
                 if (ctaBtn) ctaBtn.textContent = t('cta.button') + ' \u2014 ' + cfg.price;
                 var ctaMethods = ctaDiv.querySelector('.btn-pay + div');
@@ -3281,9 +3047,6 @@
             if (diagBtns[0]) diagBtns[0].innerHTML = t('diagnostic.generatePdf');
             if (diagBtns[1]) diagBtns[1].innerHTML = t('diagnostic.share');
 
-            // MKT section title
-            var mktTitle = document.getElementById('mktAnalysisSection');
-            if (mktTitle) mktTitle.textContent = t('mkt.title');
 
             // Footer
             var footer = document.querySelector('body > div:last-of-type');
@@ -3876,98 +3639,6 @@
                 list.appendChild(li);
             });
 
-            // Run MKT analysis if channel was provided
-            runMktAnalysis();
-        }
-
-        // ===== MARKETING ANALYSIS BONUS =====
-        function runMktAnalysis() {
-            var channel = (document.getElementById('mktChannel').value || '').trim();
-            if (!channel) return;
-
-            var section = document.getElementById('mktAnalysisSection');
-            var content = document.getElementById('mktAnalysisContent');
-            section.style.display = 'block';
-            content.style.display = 'block';
-
-            var isInstagram = channel.indexOf('instagram') > -1 || (channel.charAt(0) === '@' && channel.indexOf('tiktok') === -1 && channel.indexOf('.') === -1);
-            var isTikTok = channel.indexOf('tiktok') > -1 || channel.indexOf('tik') > -1;
-            var isWebsite = channel.indexOf('.') > -1 && channel.charAt(0) !== '@';
-
-            var handle = channel.replace(/https?:\/\//g, '').replace(/www\./g, '').replace(/\/$/, '');
-            document.getElementById('mktChannelDisplay').textContent = handle;
-
-            var criteria = [];
-            var totalScore = 0;
-            var sector = document.getElementById('sector').value;
-            var revenue = currentResults ? currentResults.revenue : 0;
-            var employees = parseInt(document.getElementById('employees').value) || 1;
-
-            var baseScores = [7, 6, 5, 5, 6, 4, 5, 6];
-            var ttScores = [7, 5, 5, 6, 5, 4, 3, 5];
-            var webScores = [7, channel.indexOf('https') > -1 ? 9 : 4, 5, 5, 6, 4, 3, 4];
-
-            if (isInstagram) {
-                var igData = t('mkt.ig');
-                criteria = igData.map(function(item, idx) { return { name: item.name, score: baseScores[idx], max: 10, tip: item.tip }; });
-            } else if (isTikTok) {
-                var ttData = t('mkt.tt');
-                criteria = ttData.map(function(item, idx) { return { name: item.name, score: ttScores[idx], max: 10, tip: item.tip }; });
-            } else {
-                var webData = t('mkt.web');
-                criteria = webData.map(function(item, idx) { return { name: item.name, score: webScores[idx], max: 10, tip: item.tip }; });
-            }
-
-            // Ajustar scores baseado no porte da empresa
-            if (employees > 20) {
-                criteria.forEach(function(c) { c.score = Math.min(c.max, c.score + 1); });
-            }
-            if (revenue > 5000000) {
-                criteria.forEach(function(c) { c.score = Math.min(c.max, c.score + 1); });
-            }
-
-            var totalPoints = 0;
-            var maxPoints = 0;
-            criteria.forEach(function(c) { totalPoints += c.score; maxPoints += c.max; });
-            var finalScore = ((totalPoints / maxPoints) * 10).toFixed(1);
-
-            // Score circle
-            var scoreEl = document.getElementById('mktScoreCircle');
-            var scoreNum = parseFloat(finalScore);
-            scoreEl.textContent = finalScore;
-            if (scoreNum >= 7) { scoreEl.style.borderColor = 'rgba(0,212,170,0.6)'; scoreEl.style.color = '#00d4aa'; }
-            else if (scoreNum >= 5) { scoreEl.style.borderColor = 'rgba(212,168,83,0.6)'; scoreEl.style.color = '#D4A853'; }
-            else { scoreEl.style.borderColor = 'rgba(255,77,106,0.6)'; scoreEl.style.color = '#ff4d6a'; }
-
-            // Score label
-            var labels = t('mkt.labels');
-            document.getElementById('mktScoreLabel').textContent = labels[Math.min(10, Math.floor(scoreNum))];
-
-            // Render criteria
-            var criteriaHTML = '';
-            criteria.forEach(function(c) {
-                var pct = (c.score / c.max * 100).toFixed(0);
-                var color = c.score >= 7 ? '#00d4aa' : c.score >= 5 ? '#D4A853' : '#ff4d6a';
-                criteriaHTML += '<div style="display:flex;align-items:center;gap:10px;">' +
-                    '<div style="flex:1;font-size:0.78rem;color:rgba(255,255,255,0.7);">' + c.name + '</div>' +
-                    '<div style="width:120px;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;">' +
-                    '<div style="width:' + pct + '%;height:100%;background:' + color + ';border-radius:3px;"></div></div>' +
-                    '<div style="width:30px;text-align:right;font-size:0.75rem;font-weight:700;color:' + color + ';">' + c.score + '</div>' +
-                    '</div>';
-            });
-            document.getElementById('mktCriteria').innerHTML = criteriaHTML;
-
-            // Verdict
-            var weakest = criteria.reduce(function(a, b) { return a.score < b.score ? a : b; });
-            var strongest = criteria.reduce(function(a, b) { return a.score > b.score ? a : b; });
-            var platform = isInstagram ? 'Instagram' : isTikTok ? 'TikTok' : 'site';
-            var sectorText = document.getElementById('sector').options[document.getElementById('sector').selectedIndex].text || '';
-            var verdict = '<strong style="color:#D4A853;">' + t('mkt.diagTitle') + ' (' + platform + ')</strong><br><br>' +
-                '<strong>' + t('mkt.strongPoint') + '</strong> ' + strongest.name + ' (' + strongest.score + '/10)<br>' +
-                '<strong>' + t('mkt.opportunity') + '</strong> ' + weakest.name + ' (' + weakest.score + '/10)<br><br>' +
-                '<strong>' + t('mkt.recommendation') + '</strong> ' + weakest.tip + '<br><br>' +
-                '<span style="font-size:0.75rem;color:rgba(255,255,255,0.4);">' + t('mkt.benchmarkNote', { s: sectorText, y: '2026' }) + '</span>';
-            document.getElementById('mktVerdict').innerHTML = verdict;
         }
 
         // ===== PAYMENT WITH MERCADO PAGO =====
