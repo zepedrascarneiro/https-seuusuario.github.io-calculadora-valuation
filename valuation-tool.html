@@ -4265,14 +4265,14 @@
             doc.text('Multiplos setoriais de fontes publicas (PwC, KPMG, EY) - Estimativa indicativa', 105, footY + 14, { align: 'center' });
             doc.text('www.qualmeuvaluation.com.br', 105, footY + 20, { align: 'center' });
 
-            // Also add footer to page 1
-            doc.setPage(1);
-            doc.setDrawColor(gold[0], gold[1], gold[2]);
-            doc.setLineWidth(0.3);
-            doc.line(25, 285, 185, 285);
-            doc.setFontSize(7);
-            doc.setTextColor(100, 100, 100);
-            doc.text('Valuation Pro | www.qualmeuvaluation.com.br | Estimativa indicativa baseada em multiplos de M&A', 105, 291, { align: 'center' });
+            // Page number on both pages
+            var totalPages = doc.internal.getNumberOfPages();
+            for (var p = 1; p <= totalPages; p++) {
+                doc.setPage(p);
+                doc.setFontSize(7);
+                doc.setTextColor(80, 80, 80);
+                doc.text('Pagina ' + p + ' de ' + totalPages, 105, 294, { align: 'center' });
+            }
 
             doc.save('valuation-' + r.companyName.replace(/\s+/g, '-') + '-' + new Date().getTime() + '.pdf');
         }
