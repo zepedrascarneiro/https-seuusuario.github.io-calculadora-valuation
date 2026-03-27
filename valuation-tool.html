@@ -1498,6 +1498,23 @@
                 padding: 5px 8px;
             }
         }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(8,9,10,0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(212,168,83,0.3);
+            padding: 12px 20px;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .sticky-cta.visible { display: flex; }
     </style>
 
     <!-- Google Ads - Replace YOUR_ID with actual Google Ads ID -->
@@ -4721,6 +4738,28 @@
             timerEl.textContent = (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
         }, 1000);
     })();
+
+    // Sticky CTA - appears when main button is out of view
+    (function() {
+        var mainBtn = document.querySelector('.btn-pay');
+        var sticky = document.getElementById('stickyCTA');
+        if (!mainBtn || !sticky) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting && document.getElementById('resultContainer') && document.getElementById('resultContainer').classList.contains('active')) {
+                    sticky.classList.add('visible');
+                } else {
+                    sticky.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0 });
+        observer.observe(mainBtn);
+    })();
     </script>
+
+    <div class="sticky-cta" id="stickyCTA">
+        <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:600;">Seu valuation está pronto</span>
+        <button class="btn-pay" onclick="handlePayment()" style="padding:10px 28px; font-size:0.85rem;">DESBLOQUEAR R$ 49</button>
+    </div>
 </body>
 </html>
