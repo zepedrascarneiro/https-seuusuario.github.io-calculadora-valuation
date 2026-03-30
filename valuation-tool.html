@@ -1788,16 +1788,18 @@
                         <text x="22" y="153" fill="rgba(255,255,255,0.1)" font-size="8" font-family="Inter">0</text>
                         <text x="132" y="22" fill="rgba(255,255,255,0.1)" font-size="8" font-family="Inter" text-anchor="middle">1.000</text>
                         <text x="248" y="153" fill="rgba(255,255,255,0.1)" font-size="8" font-family="Inter" text-anchor="end">2.000</text>
-                        <!-- Ponteiro -->
-                        <line id="gaugeNeedle" x1="140" y1="140" x2="140" y2="48" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" filter="url(#glow)" transform="rotate(-60, 140, 140)" style="transition:transform 0.8s ease-out;"/>
+                        <!-- Ponteiro com seta -->
+                        <g id="gaugeNeedle" transform="rotate(-60, 140, 140)" style="transition:transform 0.8s ease-out;">
+                            <line x1="140" y1="140" x2="140" y2="52" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                            <polygon points="140,42 136,56 144,56" fill="#c9a84c" filter="url(#glow)"/>
+                        </g>
                         <!-- Centro -->
-                        <circle cx="140" cy="140" r="5" fill="#c9a84c" opacity="0.6"/>
-                        <circle cx="140" cy="140" r="2.5" fill="#c9a84c"/>
+                        <circle cx="140" cy="140" r="6" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+                        <circle cx="140" cy="140" r="3" fill="#c9a84c"/>
                     </svg>
-                    <!-- Valor central -->
+                    <!-- Label central -->
                     <div style="position:absolute; bottom:16px; left:50%; transform:translateX(-50%); text-align:center; width:200px;">
-                        <div id="maCounterGauge" style="font-family:'Inter',monospace; font-size:1.8rem; font-weight:800; color:#c9a84c; letter-spacing:2px; line-height:1;">487</div>
-                        <div style="font-size:0.5rem; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:2px; margin-top:4px;">transa&ccedil;&otilde;es M&amp;A no Brasil</div>
+                        <div style="font-size:0.5rem; color:rgba(255,255,255,0.15); text-transform:uppercase; letter-spacing:2px;">M&amp;A Brasil 2026</div>
                     </div>
                 </div>
                 <!-- Volume R$ ao vivo - contando sem parar -->
@@ -4952,26 +4954,27 @@
         totalDeals += partialDeals;
         totalVolume += (hourOfDay / 24) * 0.7;
 
-        var elDealsGauge = document.getElementById('maCounterGauge');
         var elVolGauge = document.getElementById('maVolumeGauge');
         var needle = document.getElementById('gaugeNeedle');
         var arc = document.getElementById('gaugeArc');
 
         // Volume exato em reais (R$250bi/ano = ~R$685M/dia = ~R$7.930/segundo)
-        var volumeReais = totalVolume * 1000000000; // converte bilhoes para reais
+        var volumeReais = totalVolume * 1000000000;
         var reaisPorSegundo = 7930;
 
-        function updateGauge() {
-            if (elDealsGauge) elDealsGauge.textContent = totalDeals.toLocaleString('pt-BR');
-            // Ponteiro: 0 = -90deg, 2000 = +90deg
+        // Angulo base do ponteiro
+        var baseAngle = -90 + (totalDeals / 2000) * 180;
+        baseAngle = Math.min(baseAngle, 90);
+
+        function updateNeedle() {
             if (needle) {
-                var baseAngle = -90 + (totalDeals / 2000) * 180;
-                baseAngle = Math.min(baseAngle, 90);
-                // Tremida sutil como velocimetro real
-                var jitter = (Math.random() - 0.5) * 1.5;
+                // Tremida sutil constante como velocimetro real
+                var jitter = (Math.random() - 0.5) * 2;
                 needle.setAttribute('transform', 'rotate(' + (baseAngle + jitter) + ', 140, 140)');
             }
-            // Arco
+        }
+
+        function updateArc() {
             if (arc) {
                 var offset = 345 - (totalDeals / 2000) * 345;
                 arc.setAttribute('stroke-dashoffset', Math.max(offset, 0));
@@ -4984,24 +4987,25 @@
             }
         }
 
-        updateGauge();
+        updateArc();
         updateVolume();
+        updateNeedle();
 
-        // Volume conta sem parar - atualiza a cada 100ms (~R$793 por tick)
+        // Volume conta sem parar - atualiza a cada 100ms
         setInterval(function() {
             volumeReais += reaisPorSegundo * 0.1 * (0.8 + Math.random() * 0.4);
             updateVolume();
         }, 100);
 
-        // Ponteiro treme sutilmente a cada 2s
-        setInterval(function() {
-            updateGauge();
-        }, 2000);
+        // Ponteiro treme a cada 500ms (movimento constante visivel)
+        setInterval(updateNeedle, 500);
 
-        // Deals incrementam a cada ~30min
+        // Deals incrementam a cada ~30min (ponteiro sobe um pouquinho)
         setInterval(function() {
             totalDeals++;
-            updateGauge();
+            baseAngle = -90 + (totalDeals / 2000) * 180;
+            baseAngle = Math.min(baseAngle, 90);
+            updateArc();
         }, 1800000 + Math.random() * 600000);
     })();
 
