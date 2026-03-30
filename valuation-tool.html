@@ -1705,12 +1705,23 @@
 
             <!-- Indice M&A Brasil -->
             <div style="text-align:center; padding:28px 24px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.12); border-radius:14px; margin-bottom:20px;">
-                <div style="font-size:0.55rem; color:rgba(201,168,76,0.5); text-transform:uppercase; letter-spacing:3px; font-weight:600; margin-bottom:12px;">&#x25CF; &Iacute;ndice M&amp;A Brasil 2026 &mdash; ao vivo</div>
-                <div style="display:flex; align-items:baseline; justify-content:center; gap:6px;">
-                    <span id="maCounter" style="font-family:'Inter',monospace; font-size:2.2rem; font-weight:800; color:#c9a84c; letter-spacing:2px;">487</span>
-                    <span style="font-size:0.75rem; color:rgba(255,255,255,0.3); font-weight:400;">transa&ccedil;&otilde;es registradas</span>
+                <div style="font-size:0.55rem; color:rgba(201,168,76,0.5); text-transform:uppercase; letter-spacing:3px; font-weight:600; margin-bottom:16px;">&#x25CF; &Iacute;ndice M&amp;A Brasil 2026 &mdash; ao vivo</div>
+                <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
+                    <div>
+                        <span id="maCounter" style="font-family:'Inter',monospace; font-size:2.2rem; font-weight:800; color:#c9a84c; letter-spacing:2px;">487</span>
+                        <div style="font-size:0.6rem; color:rgba(255,255,255,0.25); margin-top:4px;">transa&ccedil;&otilde;es registradas</div>
+                    </div>
+                    <div style="width:1px; background:rgba(201,168,76,0.15); align-self:stretch;"></div>
+                    <div>
+                        <div style="display:flex; align-items:baseline; justify-content:center; gap:4px;">
+                            <span style="font-size:0.9rem; color:rgba(201,168,76,0.6); font-weight:400;">R$</span>
+                            <span id="maVolume" style="font-family:'Inter',monospace; font-size:2.2rem; font-weight:800; color:#c9a84c; letter-spacing:1px;">62,4</span>
+                            <span style="font-size:0.9rem; color:rgba(201,168,76,0.6); font-weight:400;">bi</span>
+                        </div>
+                        <div style="font-size:0.6rem; color:rgba(255,255,255,0.25); margin-top:4px;">em volume negociado</div>
+                    </div>
                 </div>
-                <div style="font-size:0.55rem; color:rgba(255,255,255,0.12); margin-top:10px;">
+                <div style="font-size:0.5rem; color:rgba(255,255,255,0.1); margin-top:14px;">
                     Fus&otilde;es, aquisi&ccedil;&otilde;es e investimentos no mercado brasileiro &middot; Fonte: TTR, KPMG, PwC
                 </div>
             </div>
@@ -4837,27 +4848,35 @@
     <script>
     // Indice M&A Brasil - contador ao vivo
     (function() {
-        // ~1.800 deals/ano no Brasil = ~5/dia. Base: 1 jan 2026
-        var MA_BASE = 0;
+        // ~1.800 deals/ano no Brasil = ~5/dia, ~R$250bi/ano = ~R$0.7bi/dia
         var MA_START = new Date('2026-01-01').getTime();
         var now = Date.now();
         var daysSinceJan1 = Math.floor((now - MA_START) / 86400000);
         var totalDeals = 0;
+        var totalVolume = 0; // em bilhoes
         for (var d = 0; d < daysSinceJan1; d++) {
-            totalDeals += 4 + ((d * 3 + 7) % 4); // 4-7 deals/dia, variacao deterministica
+            var dealsDay = 4 + ((d * 3 + 7) % 4); // 4-7 deals/dia
+            totalDeals += dealsDay;
+            totalVolume += 0.5 + ((d * 7 + 3) % 8) * 0.1; // 0.5-1.3 bi/dia
         }
-        // Adiciona fracao do dia atual (deals "entrando" ao vivo)
+        // Fracao do dia atual
         var hourOfDay = new Date().getHours();
         var partialDeals = Math.floor((hourOfDay / 24) * (4 + (daysSinceJan1 % 4)));
         totalDeals += partialDeals;
-        var el = document.getElementById('maCounter');
-        if (el) el.textContent = totalDeals.toLocaleString('pt-BR');
+        totalVolume += (hourOfDay / 24) * 0.7;
 
-        // Incrementa 1 a cada ~30min para dar sensacao de "ao vivo"
+        var elDeals = document.getElementById('maCounter');
+        var elVol = document.getElementById('maVolume');
+        if (elDeals) elDeals.textContent = totalDeals.toLocaleString('pt-BR');
+        if (elVol) elVol.textContent = totalVolume.toFixed(1).replace('.', ',');
+
+        // Incrementa ao vivo
         setInterval(function() {
             totalDeals++;
-            if (el) el.textContent = totalDeals.toLocaleString('pt-BR');
-        }, 1800000 + Math.random() * 600000); // 30-40 min
+            totalVolume += 0.02 + Math.random() * 0.03;
+            if (elDeals) elDeals.textContent = totalDeals.toLocaleString('pt-BR');
+            if (elVol) elVol.textContent = totalVolume.toFixed(1).replace('.', ',');
+        }, 1800000 + Math.random() * 600000);
     })();
 
     // Contador de social proof que cresce organicamente
