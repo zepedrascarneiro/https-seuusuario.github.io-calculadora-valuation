@@ -1758,7 +1758,48 @@
                 </div>
             </div>
 
-            <!-- Indice M&A (placeholder - widget fixo esta no body) -->
+            <!-- Velocimetro M&A -->
+            <div style="text-align:center; margin-bottom:24px;">
+                <div style="position:relative; width:220px; height:130px; margin:0 auto;">
+                    <!-- Arco do velocimetro -->
+                    <svg viewBox="0 0 220 130" style="width:100%; height:100%;">
+                        <!-- Trilha de fundo -->
+                        <path d="M 20 120 A 90 90 0 0 1 200 120" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="8" stroke-linecap="round"/>
+                        <!-- Arco preenchido (dourado) -->
+                        <path id="gaugeArc" d="M 20 120 A 90 90 0 0 1 200 120" fill="none" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="113"/>
+                        <!-- Gradiente -->
+                        <defs>
+                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgba(201,168,76,0.2)"/>
+                                <stop offset="100%" style="stop-color:#c9a84c"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Marcacoes -->
+                        <text x="18" y="118" fill="rgba(255,255,255,0.12)" font-size="7" font-family="Inter">0</text>
+                        <text x="100" y="18" fill="rgba(255,255,255,0.12)" font-size="7" font-family="Inter" text-anchor="middle">1000</text>
+                        <text x="192" y="118" fill="rgba(255,255,255,0.12)" font-size="7" font-family="Inter">2000</text>
+                        <!-- Ponteiro -->
+                        <line id="gaugeNeedle" x1="110" y1="120" x2="110" y2="40" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(-60, 110, 120)" style="transition:transform 1s ease-out;">
+                        </line>
+                        <!-- Centro -->
+                        <circle cx="110" cy="120" r="4" fill="#c9a84c" opacity="0.8"/>
+                    </svg>
+                    <!-- Valor central -->
+                    <div style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); text-align:center;">
+                        <div id="maCounterGauge" style="font-family:'Inter',monospace; font-size:1.6rem; font-weight:800; color:#c9a84c; letter-spacing:1px; line-height:1;">487</div>
+                        <div style="font-size:0.5rem; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:2px; margin-top:2px;">transa&ccedil;&otilde;es M&amp;A</div>
+                    </div>
+                </div>
+                <!-- Volume abaixo -->
+                <div style="margin-top:4px; display:flex; align-items:baseline; justify-content:center; gap:4px;">
+                    <span style="font-size:0.65rem; color:rgba(201,168,76,0.4);">R$</span>
+                    <span id="maVolumeGauge" style="font-family:'Inter',monospace; font-size:1.1rem; font-weight:700; color:#c9a84c;">62,4</span>
+                    <span style="font-size:0.65rem; color:rgba(201,168,76,0.4);">bilh&otilde;es negociados em 2026</span>
+                </div>
+                <div style="font-size:0.45rem; color:rgba(255,255,255,0.1); margin-top:6px;">
+                    <span style="display:inline-block; width:5px; height:5px; background:#c9a84c; border-radius:50%; margin-right:4px; vertical-align:middle; animation:maPulse 2s ease-in-out infinite;"></span>ao vivo &middot; Fonte: TTR, KPMG, PwC
+                </div>
+            </div>
 
             <!-- Selo de credibilidade -->
             <div style="text-align:center; padding:24px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:12px;">
@@ -4899,27 +4940,35 @@
         totalDeals += partialDeals;
         totalVolume += (hourOfDay / 24) * 0.7;
 
-        var elDeals = document.getElementById('maCounter');
-        var elVol = document.getElementById('maVolume');
-        var elDealsOdo = document.getElementById('maCounterOdo');
-        var elVolOdo = document.getElementById('maVolumeOdo');
+        var elDealsGauge = document.getElementById('maCounterGauge');
+        var elVolGauge = document.getElementById('maVolumeGauge');
+        var needle = document.getElementById('gaugeNeedle');
+        var arc = document.getElementById('gaugeArc');
 
         function updateMA() {
             var dStr = totalDeals.toLocaleString('pt-BR');
             var vStr = totalVolume.toFixed(1).replace('.', ',');
-            if (elDeals) elDeals.textContent = dStr;
-            if (elVol) elVol.textContent = vStr;
-            if (elDealsOdo) elDealsOdo.textContent = dStr;
-            if (elVolOdo) elVolOdo.textContent = vStr;
+            if (elDealsGauge) elDealsGauge.textContent = dStr;
+            if (elVolGauge) elVolGauge.textContent = vStr;
+            // Ponteiro: 0 deals = -90deg, 2000 deals = +90deg
+            if (needle) {
+                var angle = -90 + (totalDeals / 2000) * 180;
+                angle = Math.min(angle, 90);
+                needle.setAttribute('transform', 'rotate(' + angle + ', 110, 120)');
+            }
+            // Arco: dashoffset 283 (vazio) a 0 (cheio)
+            if (arc) {
+                var offset = 283 - (totalDeals / 2000) * 283;
+                offset = Math.max(offset, 0);
+                arc.setAttribute('stroke-dashoffset', offset);
+            }
         }
         updateMA();
 
-        // Volume cresce visivelmente a cada 3 segundos (odometro girando)
+        // Volume cresce visivelmente a cada 3 segundos
         setInterval(function() {
             totalVolume += 0.0002 + Math.random() * 0.0003;
-            var vStr = totalVolume.toFixed(1).replace('.', ',');
-            if (elVol) elVol.textContent = vStr;
-            if (elVolOdo) elVolOdo.textContent = vStr;
+            if (elVolGauge) elVolGauge.textContent = totalVolume.toFixed(1).replace('.', ',');
         }, 3000);
 
         // Deals incrementam a cada ~30min
@@ -4985,20 +5034,6 @@
         observer.observe(mainBtn);
     })();
     </script>
-
-    <!-- Odometro M&A fixo lateral -->
-    <div class="ma-odometer">
-        <div class="ma-pulse"></div>
-        <div style="font-size:0.4rem; color:rgba(201,168,76,0.4); text-transform:uppercase; letter-spacing:1px; margin:6px 0 8px;">M&amp;A<br>2026</div>
-        <div id="maCounterOdo" class="ma-val">487</div>
-        <div class="ma-label">deals</div>
-        <div class="ma-divider"></div>
-        <div style="display:flex; align-items:baseline; justify-content:center; gap:1px;">
-            <span style="font-size:0.5rem; color:rgba(201,168,76,0.4);">R$</span>
-            <span id="maVolumeOdo" class="ma-val" style="font-size:0.95rem;">62,4</span>
-        </div>
-        <div class="ma-label">bilh&otilde;es</div>
-    </div>
 
     <div class="sticky-cta" id="stickyCTA">
         <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:600;">Seu valuation está pronto</span>
